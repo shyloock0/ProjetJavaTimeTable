@@ -19,6 +19,6 @@ public class Room {
 		return capacity;
 	}
 	
-	// suppression ou ajout dans la db
+	// suppression ou ajout dans la DB
 
 }
