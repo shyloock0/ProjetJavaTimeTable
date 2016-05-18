@@ -15,6 +15,8 @@ import view.MainFrame;
 
 public class Main {
 	
+	
+	
 	/**
 	 * Crée l'interface graphique
 	 * 
