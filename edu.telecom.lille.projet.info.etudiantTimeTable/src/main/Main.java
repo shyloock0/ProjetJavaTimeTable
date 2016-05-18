@@ -26,6 +26,8 @@ public class Main {
 	 */
 	private static void createAndShowUI(UserController userController,TimeTableController tTController) {
 		new MainFrame(userController,tTController);
+		
+		
 	}
 	/**
 	 * Fonction principale du programme
@@ -34,6 +36,8 @@ public class Main {
 	 * 		Arguments donnés en entrée du programme 
 	 * 
 	 */
+	
+	
 	public static void main(String args[]){
 		final String userfile="userDB.xml";
 		final String tTfile="timeTableDB.xml";
