@@ -11,6 +11,7 @@ public class Room {
 		this.capacity=capacity;
 	}
 	
+	
 	//récupérations des variables
 	public int getroomId(){
 		return roomId;
