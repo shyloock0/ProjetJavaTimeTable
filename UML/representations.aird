@@ -397,7 +397,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DMTbMB2REea7tdk5iaENIg" name="login : Integer [0..1]">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DMTbMB2REea7tdk5iaENIg" name="login : String [0..1]">
             <target xmi:type="uml:Property" href="model.uml#_DLzE4B2REea7tdk5iaENIg"/>
             <semanticElements xmi:type="uml:Property" href="model.uml#_DLzE4B2REea7tdk5iaENIg"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_DMTbMR2REea7tdk5iaENIg" labelAlignment="LEFT">
