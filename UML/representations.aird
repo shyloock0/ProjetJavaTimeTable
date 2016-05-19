@@ -82,9 +82,9 @@
                     <styles xmi:type="notation:FontStyle" xmi:id="_VDkXsR2REea7tdk5iaENIg" fontName="Cantarell" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Location" xmi:id="_VDkXsh2REea7tdk5iaENIg"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_apLVUB2REea7tdk5iaENIg" type="3010" element="_apBkUB2REea7tdk5iaENIg">
-                    <styles xmi:type="notation:FontStyle" xmi:id="_apLVUR2REea7tdk5iaENIg" fontName="Cantarell" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_apLVUh2REea7tdk5iaENIg"/>
+                  <children xmi:type="notation:Node" xmi:id="_-wQrsB2mEea7tdk5iaENIg" type="3010" element="_-vq10B2mEea7tdk5iaENIg">
+                    <styles xmi:type="notation:FontStyle" xmi:id="_-wQrsR2mEea7tdk5iaENIg" fontName="Cantarell" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_-wQrsh2mEea7tdk5iaENIg"/>
                   </children>
                   <children xmi:type="notation:Node" xmi:id="_FD-5EB2SEea7tdk5iaENIg" type="3010" element="_FDyr0B2SEea7tdk5iaENIg">
                     <styles xmi:type="notation:FontStyle" xmi:id="_FD-5ER2SEea7tdk5iaENIg" fontName="Cantarell" fontHeight="8"/>
@@ -194,22 +194,22 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_77ypQ_vWEeW-4OPaS2iZdg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_77yCO_vWEeW-4OPaS2iZdg" fontName="Ubuntu" bold="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_77yCPPvWEeW-4OPaS2iZdg" x="200" y="385" width="463" height="438"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_77yCPPvWEeW-4OPaS2iZdg" x="200" y="365" width="463" height="438"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_bAUtwvvWEeW-4OPaS2iZdg"/>
           <edges xmi:type="notation:Edge" xmi:id="_B4D98PvYEeW-4OPaS2iZdg" type="4001" element="_B3-eYPvYEeW-4OPaS2iZdg" source="_B4DW4PvYEeW-4OPaS2iZdg" target="__sFOkPvXEeW-4OPaS2iZdg">
             <children xmi:type="notation:Node" xmi:id="_B4D99PvYEeW-4OPaS2iZdg" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4D99fvYEeW-4OPaS2iZdg" x="-2" y="-10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4D99fvYEeW-4OPaS2iZdg" x="-3" y="-10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_B4D99vvYEeW-4OPaS2iZdg" type="6002">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4D99_vYEeW-4OPaS2iZdg" y="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_B4ElAPvYEeW-4OPaS2iZdg" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4ElAfvYEeW-4OPaS2iZdg" x="1" y="11"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B4ElAfvYEeW-4OPaS2iZdg" x="1" y="12"/>
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_B4D98fvYEeW-4OPaS2iZdg"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_B4D98vvYEeW-4OPaS2iZdg" fontName="Ubuntu" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_B4D98_vYEeW-4OPaS2iZdg" points="[-4, 49, 9, -108]$[-9, 108, 4, -49]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_B4D98_vYEeW-4OPaS2iZdg" points="[-4, 49, 9, -100]$[-9, 100, 4, -49]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B4ElAvvYEeW-4OPaS2iZdg" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B4ElA_vYEeW-4OPaS2iZdg" id="(0.5,0.5)"/>
           </edges>
@@ -421,10 +421,10 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_apBkUB2REea7tdk5iaENIg" name="room : EDate [0..1]">
-            <target xmi:type="uml:Property" href="model.uml#_aojDMB2REea7tdk5iaENIg"/>
-            <semanticElements xmi:type="uml:Property" href="model.uml#_aojDMB2REea7tdk5iaENIg"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_apBkUR2REea7tdk5iaENIg" labelAlignment="LEFT">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-vq10B2mEea7tdk5iaENIg" name="roomId : Integer [0..1]">
+            <target xmi:type="uml:Property" href="model.uml#_-vVeoB2mEea7tdk5iaENIg"/>
+            <semanticElements xmi:type="uml:Property" href="model.uml#_-vVeoB2mEea7tdk5iaENIg"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_-vrc4B2mEea7tdk5iaENIg" labelAlignment="LEFT">
               <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
@@ -581,7 +581,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
           </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aRBCEB2TEea7tdk5iaENIg" name="AddTimeTable()">
+          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aRBCEB2TEea7tdk5iaENIg" name="addTimeTable()">
             <target xmi:type="uml:Operation" href="model.uml#_aQig8B2TEea7tdk5iaENIg"/>
             <semanticElements xmi:type="uml:Operation" href="model.uml#_aQig8B2TEea7tdk5iaENIg"/>
             <ownedStyle xmi:type="diagram:Square" xmi:id="_aRBCER2TEea7tdk5iaENIg" labelAlignment="LEFT">

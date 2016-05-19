@@ -63,10 +63,10 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VC8FkR2REea7tdk5iaENIg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VC8Fkh2REea7tdk5iaENIg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_aojDMB2REea7tdk5iaENIg" name="room" visibility="protected">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aojqQB2REea7tdk5iaENIg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aojqQR2REea7tdk5iaENIg" value="1"/>
+      <ownedAttribute xmi:id="_-vVeoB2mEea7tdk5iaENIg" name="roomId" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-vWFsB2mEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-vWswB2mEea7tdk5iaENIg" value="1"/>
       </ownedAttribute>
       <ownedOperation xmi:id="_FDZDMB2SEea7tdk5iaENIg" name="getbookId"/>
       <ownedOperation xmi:id="_H5OA0B2SEea7tdk5iaENIg" name="getlogin"/>
@@ -105,7 +105,7 @@
       <ownedOperation xmi:id="_KNkzoB2TEea7tdk5iaENIg" name="getlistBooking"/>
       <ownedOperation xmi:id="_VTlewB2TEea7tdk5iaENIg" name="getTableId"/>
       <ownedOperation xmi:id="_WrOnIB2TEea7tdk5iaENIg" name="getBookingMaxId"/>
-      <ownedOperation xmi:id="_aQig8B2TEea7tdk5iaENIg" name="AddTimeTable"/>
+      <ownedOperation xmi:id="_aQig8B2TEea7tdk5iaENIg" name="addTimeTable"/>
       <ownedOperation xmi:id="_cqxuwB2TEea7tdk5iaENIg" name="removeTimeTable"/>
       <ownedOperation xmi:id="_g4pdYB2TEea7tdk5iaENIg" name="addBook"/>
       <ownedOperation xmi:id="_kZXLEB2TEea7tdk5iaENIg" name="removeBook"/>
