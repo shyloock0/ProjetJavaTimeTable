@@ -38,6 +38,7 @@
       <ownedOperation xmi:id="_7t3FmPvXEeW-4OPaS2iZdg" name="loadDB"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_rDr1YB2QEea7tdk5iaENIg" name="Book">
+      <generalization xmi:id="_KXbksB4LEeafqe8FcHhbrg" general="_WCiE4B2SEea7tdk5iaENIg"/>
       <ownedAttribute xmi:id="_4b_TQB2QEea7tdk5iaENIg" name="bookId" visibility="protected">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4cAhYB2QEea7tdk5iaENIg"/>
@@ -91,7 +92,7 @@
       <ownedOperation xmi:id="_wE_hMB2SEea7tdk5iaENIg" name="addroom"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_yQrVoB2SEea7tdk5iaENIg" name="TimeTable">
-      <generalization xmi:id="_39Kh4B2TEea7tdk5iaENIg" general="_rDr1YB2QEea7tdk5iaENIg"/>
+      <generalization xmi:id="_O1ENoB4LEeafqe8FcHhbrg" general="_rDr1YB2QEea7tdk5iaENIg"/>
       <ownedAttribute xmi:id="_2fDakB2SEea7tdk5iaENIg" name="timeTableId" visibility="protected">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2fDakR2SEea7tdk5iaENIg"/>
