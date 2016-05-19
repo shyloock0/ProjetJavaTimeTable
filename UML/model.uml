@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9Fht8PvVEeW-4OPaS2iZdg" name="NewModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="_7uWDIPvWEeW-4OPaS2iZdg" name="timeTableController">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_7uWDIvvWEeW-4OPaS2iZdg" name="ITimeTableController"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_7tn08PvXEeW-4OPaS2iZdg" name="ITimeTableController"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7t13YfvXEeW-4OPaS2iZdg" name="TimeTableController"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_7uaUkPvWEeW-4OPaS2iZdg" supplier="_7uWDIvvWEeW-4OPaS2iZdg" contract="_7uWDIvvWEeW-4OPaS2iZdg"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_7ucw0PvWEeW-4OPaS2iZdg" name="timeTableModel">
+    <packagedElement xmi:type="uml:Class" xmi:id="_7ucw0fvWEeW-4OPaS2iZdg" name="TimeTable">
+      <ownedAttribute xmi:id="_7ucw0vvWEeW-4OPaS2iZdg" name="groupId" visibility="private">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7ucw0_vWEeW-4OPaS2iZdg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7ucw1PvWEeW-4OPaS2iZdg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7t3Fh_vXEeW-4OPaS2iZdg" name="TimeTableDB">
+      <ownedAttribute xmi:id="_7t3FiPvXEeW-4OPaS2iZdg" name="file" visibility="private">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FifvXEeW-4OPaS2iZdg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3FivvXEeW-4OPaS2iZdg" value="1"/>
+        <qualifier xmi:id="_7t3Fi_vXEeW-4OPaS2iZdg" name="FirstName" visibility="protected">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FjPvXEeW-4OPaS2iZdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3FjfvXEeW-4OPaS2iZdg" value="1"/>
+        </qualifier>
+        <qualifier xmi:id="_7t3FjvvXEeW-4OPaS2iZdg" name="login" visibility="protected">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3Fj_vXEeW-4OPaS2iZdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3FkPvXEeW-4OPaS2iZdg" value="1"/>
+        </qualifier>
+        <qualifier xmi:id="_7t3FkfvXEeW-4OPaS2iZdg" name="pwd" visibility="protected">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FkvvXEeW-4OPaS2iZdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3Fk_vXEeW-4OPaS2iZdg" value="1"/>
+        </qualifier>
+        <qualifier xmi:id="_7t3FlPvXEeW-4OPaS2iZdg" name="SurName" visibility="protected">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FlfvXEeW-4OPaS2iZdg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3FlvvXEeW-4OPaS2iZdg" value="1"/>
+        </qualifier>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_7t3Fl_vXEeW-4OPaS2iZdg" name="saveDB"/>
+      <ownedOperation xmi:id="_7t3FmPvXEeW-4OPaS2iZdg" name="loadDB"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rDr1YB2QEea7tdk5iaENIg" name="Book">
+      <ownedAttribute xmi:id="_4b_TQB2QEea7tdk5iaENIg" name="bookId" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4cAhYB2QEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4cBIcB2QEea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_DLzE4B2REea7tdk5iaENIg" name="login" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DLzE4R2REea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DLzE4h2REea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_G1NbkB2REea7tdk5iaENIg" name="dateBegin" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G1NbkR2REea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G1Nbkh2REea7tdk5iaENIg" value="1"/>
+        <qualifier xmi:id="_UfjrsB2REea7tdk5iaENIg" name="login" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UfjrsR2REea7tdk5iaENIg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ufjrsh2REea7tdk5iaENIg" value="1"/>
+        </qualifier>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_VC8FkB2REea7tdk5iaENIg" name="dateEnd" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VC8FkR2REea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VC8Fkh2REea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_aojDMB2REea7tdk5iaENIg" name="room" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aojqQB2REea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aojqQR2REea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_FDZDMB2SEea7tdk5iaENIg" name="getbookId"/>
+      <ownedOperation xmi:id="_H5OA0B2SEea7tdk5iaENIg" name="getlogin"/>
+      <ownedOperation xmi:id="_LMCccB2SEea7tdk5iaENIg" name="getdateBegin"/>
+      <ownedOperation xmi:id="_N9U4UB2SEea7tdk5iaENIg" name="getdateEnd"/>
+      <ownedOperation xmi:id="_P8gh0B2SEea7tdk5iaENIg" name="getroom"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WCiE4B2SEea7tdk5iaENIg" name="Room">
+      <ownedAttribute xmi:id="_bxiPEB2SEea7tdk5iaENIg" name="roomId" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bxi2IB2SEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bxi2IR2SEea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iIVZEB2SEea7tdk5iaENIg" name="capacity" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iIVZER2SEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iIVZEh2SEea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_lSpY8B2SEea7tdk5iaENIg" name="getroomId"/>
+      <ownedOperation xmi:id="_oDbegB2SEea7tdk5iaENIg" name="getcapacity"/>
+      <ownedOperation xmi:id="_qYM9gB2SEea7tdk5iaENIg" name="removeroom"/>
+      <ownedOperation xmi:id="_wE_hMB2SEea7tdk5iaENIg" name="addroom"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_yQrVoB2SEea7tdk5iaENIg" name="TimeTable">
+      <generalization xmi:id="_39Kh4B2TEea7tdk5iaENIg" general="_rDr1YB2QEea7tdk5iaENIg"/>
+      <ownedAttribute xmi:id="_2fDakB2SEea7tdk5iaENIg" name="timeTableId" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2fDakR2SEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2fDakh2SEea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_8MdCQB2SEea7tdk5iaENIg" name="listBooking" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8MdCQR2SEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8MdCQh2SEea7tdk5iaENIg" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_KNkzoB2TEea7tdk5iaENIg" name="getlistBooking"/>
+      <ownedOperation xmi:id="_VTlewB2TEea7tdk5iaENIg" name="getTableId"/>
+      <ownedOperation xmi:id="_WrOnIB2TEea7tdk5iaENIg" name="getBookingMaxId"/>
+      <ownedOperation xmi:id="_aQig8B2TEea7tdk5iaENIg" name="AddTimeTable"/>
+      <ownedOperation xmi:id="_cqxuwB2TEea7tdk5iaENIg" name="removeTimeTable"/>
+      <ownedOperation xmi:id="_g4pdYB2TEea7tdk5iaENIg" name="addBook"/>
+      <ownedOperation xmi:id="_kZXLEB2TEea7tdk5iaENIg" name="removeBook"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ZCVL8B2UEea7tdk5iaENIg" memberEnd="_ZCVzAB2UEea7tdk5iaENIg _ZCVzAx2UEea7tdk5iaENIg" navigableOwnedEnd="_ZCVzAx2UEea7tdk5iaENIg">
+      <ownedEnd xmi:id="_ZCVzAB2UEea7tdk5iaENIg" name="rooms" type="_WCiE4B2SEea7tdk5iaENIg" aggregation="composite" association="_ZCVL8B2UEea7tdk5iaENIg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZCVzAR2UEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZCVzAh2UEea7tdk5iaENIg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ZCVzAx2UEea7tdk5iaENIg" name="timeTableDBs" type="_7t3Fh_vXEeW-4OPaS2iZdg" association="_ZCVL8B2UEea7tdk5iaENIg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZCWaEB2UEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZCWaER2UEea7tdk5iaENIg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_aE41IB2UEea7tdk5iaENIg" memberEnd="_aE41IR2UEea7tdk5iaENIg _aE6DQR2UEea7tdk5iaENIg" navigableOwnedEnd="_aE6DQR2UEea7tdk5iaENIg">
+      <ownedEnd xmi:id="_aE41IR2UEea7tdk5iaENIg" name="timeTables" type="_yQrVoB2SEea7tdk5iaENIg" aggregation="composite" association="_aE41IB2UEea7tdk5iaENIg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aE5cMB2UEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aE6DQB2UEea7tdk5iaENIg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_aE6DQR2UEea7tdk5iaENIg" name="timeTableDBs" type="_7t3Fh_vXEeW-4OPaS2iZdg" association="_aE41IB2UEea7tdk5iaENIg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aE6qUB2UEea7tdk5iaENIg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aE6qUR2UEea7tdk5iaENIg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_7t13YPvXEeW-4OPaS2iZdg" client="_7t13YfvXEeW-4OPaS2iZdg" supplier="_7tn08PvXEeW-4OPaS2iZdg" contract="_7tn08PvXEeW-4OPaS2iZdg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7t3FgPvXEeW-4OPaS2iZdg" name="contains" memberEnd="_7t3FgfvXEeW-4OPaS2iZdg _7t3FhPvXEeW-4OPaS2iZdg" navigableOwnedEnd="_7t3FhPvXEeW-4OPaS2iZdg">
+    <ownedEnd xmi:id="_7t3FgfvXEeW-4OPaS2iZdg" name="timeTableController" type="_7t13YfvXEeW-4OPaS2iZdg" aggregation="composite" association="_7t3FgPvXEeW-4OPaS2iZdg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FgvvXEeW-4OPaS2iZdg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3Fg_vXEeW-4OPaS2iZdg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_7t3FhPvXEeW-4OPaS2iZdg" name="timeTableDB" type="_7t3Fh_vXEeW-4OPaS2iZdg" association="_7t3FgPvXEeW-4OPaS2iZdg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7t3FhfvXEeW-4OPaS2iZdg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7t3FhvvXEeW-4OPaS2iZdg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
