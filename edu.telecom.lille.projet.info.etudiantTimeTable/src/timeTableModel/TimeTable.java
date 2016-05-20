@@ -44,7 +44,6 @@ public class TimeTable {
 	}
 	
 	
-	//ajout et suppression dans la base de données
 	
 	
 	
