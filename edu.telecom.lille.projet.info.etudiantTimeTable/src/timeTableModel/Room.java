@@ -21,5 +21,10 @@ public class Room {
 	}
 	
 	// suppression ou ajout dans la DB
+	void addroom(){
+		Text t1=doc.create.TextNode(roomId);
+		Text t2=doc.create.TextNode(capacity);
+				
+	}
 
 }
