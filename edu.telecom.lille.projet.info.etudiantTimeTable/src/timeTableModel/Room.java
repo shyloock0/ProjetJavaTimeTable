@@ -16,15 +16,9 @@ public class Room {
 	public int getroomId(){
 		return roomId;
 	}
-	public int capacity(){
+	
+	public int getcapacity(){
 		return capacity;
 	}
-	
-	// suppression ou ajout dans la DB
-	void addroom(){
-		Text t1=doc.create.TextNode(roomId);
-		Text t2=doc.create.TextNode(capacity);
-				
-	}
-
 }
+

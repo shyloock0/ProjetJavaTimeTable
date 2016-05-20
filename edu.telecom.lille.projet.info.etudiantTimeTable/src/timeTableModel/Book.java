@@ -17,7 +17,6 @@ public class Book {
 		this.login=login;
 		this.dateBegin=dateBegin;
 		this.dateEnd=dateEnd;
-		this.room=room;
 		
 	}
 	//recuperation des elmts protégés
