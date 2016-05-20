@@ -28,7 +28,7 @@ public class TimeTableDB {
 	 */
 	public TimeTableDB(String file){
 		//TODO	À modifier
-		super();
+		//super();// cette classe n'est pas hériter!????
 		this.setFile(file);
 	}
 	/**
