@@ -20,7 +20,8 @@ public interface ITimeTableController {
 	/**
 	 * Fonction permettant de récupérer le login du professeur qui a réalisé la réservation dont l'identifiant est bookId dans l'emploi du temps dont l'identifiant est timeTableId. 
 	 * @param timeTableId
-	 * 		L'identifiant de l'emploi du temps
+	 * 		L'identifiant de l'emploi du tempsvv
+	 * 
 	 * @param bookId
 	 * 		L'identifiant de réservation
 	 * @return
