@@ -1,5 +1,6 @@
 package timeTableController;
 
+import java.awt.print.Book;
 import java.util.Date;
 import java.util.Hashtable;
 
@@ -11,12 +12,13 @@ import timeTableModel.TimeTableDB;
  * 
  * @author Jose Mennesson (Mettre à jour)
  * @version 04/2016 (Mettre à jour)
+ * @param <TimeTable>
  * 
  */
 
 //TODO Classe à modifier
 
-public class TimeTableController implements ITimeTableController{
+public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	/**
 	 * Contient une instance de base de données d'emplois du temps
@@ -36,6 +38,13 @@ public class TimeTableController implements ITimeTableController{
 
 	@Override
 	public String getTeacherLogin(int timeTableId, int bookId) {
+		String book = Integer.toString(bookId);
+		Book book;
+		book.getlogin
+		
+		
+		
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
