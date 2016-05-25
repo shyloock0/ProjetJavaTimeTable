@@ -32,7 +32,7 @@ public class Book {
 	public Date getDateEnd(){
 		return dateEnd;
 	}
-	public int room(){
+	public int getroomId(){
 		return roomId;
 	}
 

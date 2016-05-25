@@ -34,9 +34,9 @@ public class TimeTableDB {
 	org.jdom2.Document doc = new Document(rootElt);
 	
 	//creation des map: association entre id et nom des instances
-	HashMap<Integer,Room> roomsMap; 
-	HashMap<Integer,TimeTable> timetablesMap;
-	HashMap<Integer, Book> booksMap;
+	protected HashMap<Integer,Room> roomsMap; 
+	protected HashMap<Integer,TimeTable> timetablesMap;
+	protected HashMap<Integer, Book> booksMap;
 	
 	private String file;
 	/**
@@ -72,6 +72,17 @@ public class TimeTableDB {
 	public void setFile(String file) {
 		this.file = file;
 	}
+	public HashMap<Integer,Room> getroomsMap(){
+		return roomsMap;
+	}
+	public HashMap<Integer,Book> getbooksMap(){
+		return booksMap;
+	}
+	public HashMap<Integer,TimeTable> gettimetablesMap(){
+		return timetablesMap;
+	}
+	
+	
 		
 	//sauvergarde
 	public void saveDB(){
@@ -218,6 +229,9 @@ public class TimeTableDB {
 				
 				//on enleve de la map
 				booksMap.remove(bookId);
+				
+				//on enleve pour les classes de java
+				timetablesMap.get(timeTableId).removeBooking(bookId);
 						
 				Element TimeTablesElt= rootElt.getChild("TimeTables");
 				List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
@@ -256,7 +270,7 @@ public class TimeTableDB {
 		booksMap.put(bookId,abook);
 		
 		// on ajout la reservation dans l'emploi du temps associé en java
-		//timetablesMap.get(timeTableId).addBook(abook);
+		timetablesMap.get(timeTableId).addBooking(bookId);
 	
 		
 		//melange de deux techniques

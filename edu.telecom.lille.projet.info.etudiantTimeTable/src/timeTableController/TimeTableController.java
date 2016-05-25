@@ -38,20 +38,23 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String getTeacherLogin(int timeTableId, int bookId) {
-		/*String book = Integer.toString(bookId);*/
-		/*Book book;
-		book.getlogin*/
-		
-		
-		
-		
-		// TODO Auto-generated method stub
-		return null;
+		// Pourquoi on a timetableid???
+		return tTDB.getbooksMap().get(bookId).getlogin();
 	}
 
 	@Override
-	public String[] roomsIdToString() {
-		// TODO Auto-generated method stub
+	public String[] roomsIdToString(){
+		String[] roomIdString;
+		int length;
+		
+		length=tTDB.getroomsMap().size();
+		roomIdString= new String[length];
+		
+		/*for (int i=0;i<length;i++){
+			roomIdString[i]=Integer.toString(tTDB.getroomsMap().)
+		}
+		*/
+		
 		return null;
 	}
 
@@ -75,13 +78,13 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean addRoom(int roomId, int capacity) {
-		// TODO Auto-generated method stub
-		return false;
+		tTDB.addRoom(roomId, capacity);// manque le cas ou c'est pas possible
+		return true;
 	}
 
 	@Override
 	public boolean removeRoom(int roomId) {
-		// TODO Auto-generated method stub
+		tTDB.removeRoom(roomId);//manque le cas ou c'est pas possible
 		return false;
 	}
 
@@ -105,7 +108,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean addBooking(int timeTableId, int bookingId, String login, Date dateBegin, Date dateEnd, int roomId) {
-		// TODO Auto-generated method stub
+		tTDB.addBook(timeTableId, bookingId, login, dateBegin, dateEnd, roomId);
 		return false;
 	}
 
@@ -117,6 +120,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean removeBook(int timeTableId, int bookId) {
+		tTDB.removeBook(timeTableId, bookId);
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -129,14 +133,14 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean saveDB() {
-		// TODO Auto-generated method stub
-		return false;
+		tTDB.saveDB();
+		return true;
 	}
 
 	@Override
 	public boolean loadDB() {
-		// TODO Auto-generated method stub
-		return false;
+		tTDB.loadDB();
+		return true;
 	}
 	
 	

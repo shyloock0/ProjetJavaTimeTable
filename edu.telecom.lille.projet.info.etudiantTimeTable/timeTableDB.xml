@@ -21,6 +21,18 @@
       <RoomId>35</RoomId>
       <Capacity>255500</Capacity>
     </Room>
+    <Room>
+      <RoomId>3555</RoomId>
+      <Capacity>255500</Capacity>
+    </Room>
+    <Room>
+      <RoomId>3555</RoomId>
+      <Capacity>255500</Capacity>
+    </Room>
+    <Room>
+      <RoomId>666</RoomId>
+      <Capacity>6666666</Capacity>
+    </Room>
   </Rooms>
   <TimeTables>
     <TimeTable>

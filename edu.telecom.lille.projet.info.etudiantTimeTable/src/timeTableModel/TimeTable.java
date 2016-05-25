@@ -32,8 +32,8 @@ public class TimeTable {
 		System.out.println("L'emploi du temps est trop chargé. Vous ne pouvez plus faire de réservation!!");
 		return;	
 	}
-	void removeBook(int bookId){
-		for (int i = 0;i<49;i++){
+	void removeBooking(int bookId){
+		for (int i = 0;i<499;i++){
 			if (listBooking[i]==bookId){
 				listBooking[i]=0;
 				System.out.println("La réservation "+bookId+" a été supprimée");

@@ -73,9 +73,11 @@ public class Main {
 		//ttdb.removeRoom(76);
 		//ttdb.addTimeTable(76);
 		//ttdb.addBook(2,400,"Sarah",dated4,datee4,55);
-		ttdb.removeTimeTable(76);
-		//ttdb.addRoom(35,255500);
-		ttdb.showDB();
+		//ttdb.removeTimeTable(76);
+		//ttdb.addRoom(3555,255500);
+		//ttdb.addRoom(666, 6666666);
+		//ttdb.showDB();
+		//System.out.println(ttdb.roomsMap.toString());
 		
 	}
 }
