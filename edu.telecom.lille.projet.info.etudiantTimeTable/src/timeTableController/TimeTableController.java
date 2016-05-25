@@ -38,9 +38,9 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String getTeacherLogin(int timeTableId, int bookId) {
-		String book = Integer.toString(bookId);
-		Book book;
-		book.getlogin
+		/*String book = Integer.toString(bookId);*/
+		/*Book book;
+		book.getlogin*/
 		
 		
 		
@@ -57,7 +57,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String[] roomsToString() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub tout les informations()
 		return null;
 	}
 

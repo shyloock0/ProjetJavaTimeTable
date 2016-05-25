@@ -23,7 +23,7 @@ public class TimeTable {
 	void addBook(Book book){
 		for (int i = 0;i<49;i++){
 			if (listBooking[i]!=0){
-				listBooking[i]=book.BookId;
+				listBooking[i]=book.bookId;
 				System.out.println("La réservation "+book+" a été prise en compte");
 				return;
 			}	
@@ -33,7 +33,7 @@ public class TimeTable {
 	}
 	void removeBook(Book book){
 		for (int i = 0;i<49;i++){
-			if (listBooking[i]==book.BookId){
+			if (listBooking[i]==book.bookId){
 				listBooking[i]=0;
 				System.out.println("La réservation "+book+" a été supprimée");
 				return;

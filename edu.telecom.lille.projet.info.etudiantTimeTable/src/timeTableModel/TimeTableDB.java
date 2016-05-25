@@ -6,6 +6,7 @@ import org.jdom2.output.*;
 import org.jdom2.input.*;
 import java.util.List;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -28,9 +29,13 @@ public class TimeTableDB {
 	 * 
 	 */
 	//création du fichier doc (Document)
-	Element rootElt=new Element("TimeTableDB");
+	Element rootElt=new Element("TimeTablesDB");
 	org.jdom2.Document doc = new Document(rootElt);
-
+	
+	//creation des map: association entre id et nom des instances
+	HashMap<Integer,Room> roomsMap; 
+	HashMap<Integer,TimeTable> timetablesMap;
+	HashMap<Integer, Book> booksMap;
 	
 	private String file;
 	/**
@@ -44,6 +49,7 @@ public class TimeTableDB {
 		//TODO	À modifier
 		//super();// cette classe n'est pas hériter!????
 		this.setFile(file);
+		this.roomsMap=new HashMap<Integer,Room>();
 	}
 	/**
 	 * Getter de file
@@ -72,6 +78,13 @@ public class TimeTableDB {
 		}catch (IOException e){}
 	}
 	
+	public void showDB(){
+		try{
+			XMLOutputter sortie =new XMLOutputter(Format.getPrettyFormat());
+			sortie.output(doc,System.out);
+		}catch (IOException e){}
+	}
+	
 	
 	public void loadDB(){
 		try{
@@ -82,6 +95,8 @@ public class TimeTableDB {
 		}
 	
 	public void removeRoom(int roomId){
+		//destruction de l'objet java dans la map
+		
 		//charge la base de donnee
 		loadDB();
 		
@@ -110,9 +125,12 @@ public class TimeTableDB {
 		
 		loadDB();
 		
+		Room aRoom=new Room(roomId,capacity);
+		roomsMap.put(roomId,aRoom);
+		
 		//melange de deux techniques
 		Element RoomsElt= rootElt.getChild("Rooms");
-			
+		System.out.println(RoomsElt);
 		//					JDOM
 		//creation d'une sous classe Room de Rooms
 		Element RoomElt = new Element("Room");
@@ -126,6 +144,7 @@ public class TimeTableDB {
 		CapacityRoomElt.setText(Integer.toString(capacity));
 		RoomElt.addContent(CapacityRoomElt);
 		saveDB();
+		
 			
 	}
 	
@@ -133,6 +152,11 @@ public class TimeTableDB {
 	
 	public void addTimeTable(int timeTableId){
 		loadDB();
+		
+		//creation de l'instance
+		TimeTable atimetable=new TimeTable(timeTableId);
+		timetablesMap.put(timeTableId,atimetable);
+		
 		
 		//melange de deux techniques
 		Element TimeTablesElt= rootElt.getChild("TimeTables");
@@ -167,8 +191,8 @@ public class TimeTableDB {
 		while(i.hasNext()){
 			Element courant = (Element)i.next();
 			//Si l’étudiant possède l'Element en question on applique les modifications.
-			if(courant.getChild("timeTableId").getText()==Integer.toString(timeTableId)){
-				//On supprime l'Element en question en passant par sont parrent
+			if(courant.getChild("timeTableId").getText().compareTo(Integer.toString(timeTableId))==0){
+				//On supprime l'Element en question en passant par son parrent
 				TimeTablesElt.removeContent(courant);
 				}
 			}
@@ -214,6 +238,9 @@ public class TimeTableDB {
 
 	public void addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
 		loadDB();
+		//création de l'objet en java
+		Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
+		booksMap.put(bookId,abook);
 		
 		//melange de deux techniques
 		Element TimeTablesElt= rootElt.getChild("TimeTables");
