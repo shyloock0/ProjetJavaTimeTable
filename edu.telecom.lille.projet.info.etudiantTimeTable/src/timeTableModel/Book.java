@@ -9,15 +9,15 @@ public class Book {
 	protected String login;
 	protected Date dateBegin;
 	protected Date dateEnd;
-	protected Room room;
+	protected int roomId;
 	
 	//initialisation des variables
-	public Book(int BookId, String login, Date dateBegin,Date dateEnd, Room room){
+	public Book(int BookId, String login, Date dateBegin,Date dateEnd,int room){
 		this.BookId=BookId;
 		this.login=login;
 		this.dateBegin=dateBegin;
 		this.dateEnd=dateEnd;
-		
+		this.roomId=room;
 	}
 	//recuperation des elmts protégés
 	public int getbookId(){
@@ -32,8 +32,8 @@ public class Book {
 	public Date getDateEnd(){
 		return dateEnd;
 	}
-	public Room room(){
-		return room;
+	public int room(){
+		return roomId;
 	}
 
 }
