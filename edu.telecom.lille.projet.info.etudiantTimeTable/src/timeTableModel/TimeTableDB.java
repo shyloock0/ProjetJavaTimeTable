@@ -51,6 +51,8 @@ public class TimeTableDB {
 		//super();// cette classe n'est pas hériter!????
 		this.setFile(file);
 		this.roomsMap=new HashMap<Integer,Room>();
+		this.timetablesMap=new HashMap<Integer,TimeTable>();
+		this.booksMap=new HashMap<Integer,Book>();
 	}
 	/**
 	 * Getter de file
@@ -127,8 +129,8 @@ public class TimeTableDB {
 		
 		loadDB();
 		//creation de l'objet java
-		Room aroom=new Room(roomId,capacity);
-		roomsMap.put(roomId,aroom);
+		Room abroom=new Room(roomId,capacity);
+		roomsMap.put(roomId,abroom);
 		
 		//melange de deux techniques
 		Element RoomsElt= rootElt.getChild("Rooms");
@@ -147,6 +149,7 @@ public class TimeTableDB {
 		Element  CapacityRoomElt = new Element("Capacity");
 		CapacityRoomElt.setText(Integer.toString(capacity));
 		RoomElt.addContent(CapacityRoomElt);
+		
 		saveDB();
 		
 			
@@ -158,10 +161,9 @@ public class TimeTableDB {
 		loadDB();
 		
 		//creation de l'instance
-		/*Room aroom=new Room(roomId,capacity);
-		roomsMap.put(roomId,aroom);*/
-		TimeTable atimetable=new TimeTable(timeTableId);
-		timetablesMap.put(timeTableId,atimetable);
+		TimeTable atimetable;
+		atimetable=new TimeTable(timeTableId);
+		timetablesMap.put(timeTableId, atimetable);
 		
 		
 		//melange de deux techniques
@@ -186,7 +188,7 @@ public class TimeTableDB {
 	
 	public void removeTimeTable(int timeTableId){
 		//meme principe que pour removeRoom()
-		//timetablesMap.remove(timeTableId);
+		timetablesMap.remove(timeTableId);
 		
 		//charge la base de donnee
 		loadDB();
@@ -215,7 +217,7 @@ public class TimeTableDB {
 				loadDB();
 				
 				//on enleve de la map
-				//booksMap.remove(bookId);
+				booksMap.remove(bookId);
 						
 				Element TimeTablesElt= rootElt.getChild("TimeTables");
 				List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
@@ -250,8 +252,8 @@ public class TimeTableDB {
 		loadDB();
 		
 		//création de l'objet en java
-		//Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
-		//booksMap.put(bookId,abook);
+		Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
+		booksMap.put(bookId,abook);
 		
 		// on ajout la reservation dans l'emploi du temps associé en java
 		//timetablesMap.get(timeTableId).addBook(abook);

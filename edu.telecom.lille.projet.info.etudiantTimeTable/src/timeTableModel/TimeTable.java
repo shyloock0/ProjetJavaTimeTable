@@ -3,7 +3,7 @@ package timeTableModel;
 public class TimeTable {
 	//créations des variables 
 	protected int timeTableId;
-	protected int listBooking []= new int [50];
+	//protected int listBooking []= new int [50];
 	
 	//initialisations des variables
 	public TimeTable(int timeTableId){
@@ -12,15 +12,16 @@ public class TimeTable {
 	
 	
 	//recupérations des données
-	public int[] getlistBooking(){
+	/*public int[] getlistBooking(){
 		return listBooking;
 	}
+	*/
 	public int gettimeTableId(){
 		return timeTableId;
 	}
 	
 	//ajout ou suppression d'une réservation
-	void addBook(Book book){
+	/*void addBook(Book book){
 		for (int i = 0;i<49;i++){
 			if (listBooking[i]!=0){
 				listBooking[i]=book.bookId;
@@ -41,7 +42,7 @@ public class TimeTable {
 		}
 		System.out.println("Cette réservation n'existe pas!! elle ne peut donc pas être supprimée");
 		return;	
-	}
+	}*/
 	
 	
 	

@@ -17,6 +17,10 @@
       <RoomId>50</RoomId>
       <Capacity>2500</Capacity>
     </Room>
+    <Room>
+      <RoomId>35</RoomId>
+      <Capacity>255500</Capacity>
+    </Room>
   </Rooms>
   <TimeTables>
     <TimeTable>
@@ -58,6 +62,10 @@
         <DateEnd>11 000 11110</DateEnd>
         <RoomId>55</RoomId>
       </Book>
+    </TimeTable>
+    <TimeTable>
+      <GroupId>75</GroupId>
+      <Books />
     </TimeTable>
   </TimeTables>
 </TimeTablesDB>

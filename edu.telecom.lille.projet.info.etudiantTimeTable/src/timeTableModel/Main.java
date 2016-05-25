@@ -70,11 +70,11 @@ public class Main {
 		System.out.println(datee4);
 		
 		//ttdb.removeBook(2,900);
-		//ttdb.removeRoom(1);
-		//ttdb.addTimeTable(75);
+		//ttdb.removeRoom(76);
+		//ttdb.addTimeTable(76);
 		//ttdb.addBook(2,400,"Sarah",dated4,datee4,55);
-		//ttdb.removeTimeTable(2);
-		//ttdb.addRoom(50,2500);
+		ttdb.removeTimeTable(76);
+		//ttdb.addRoom(35,255500);
 		ttdb.showDB();
 		
 	}
