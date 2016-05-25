@@ -3,7 +3,7 @@ package timeTableModel;
 public class TimeTable {
 	//créations des variables 
 	protected int timeTableId;
-	//protected int listBooking []= new int [50];
+	protected int listBooking []= new int [500];
 	
 	//initialisations des variables
 	public TimeTable(int timeTableId){
@@ -12,37 +12,37 @@ public class TimeTable {
 	
 	
 	//recupérations des données
-	/*public int[] getlistBooking(){
+	public int[] getlistBooking(){
 		return listBooking;
 	}
-	*/
+
 	public int gettimeTableId(){
 		return timeTableId;
 	}
 	
 	//ajout ou suppression d'une réservation
-	/*void addBook(Book book){
-		for (int i = 0;i<49;i++){
+	void addBooking(int bookId){
+		for (int i = 0;i<499;i++){
 			if (listBooking[i]!=0){
-				listBooking[i]=book.bookId;
-				System.out.println("La réservation "+book+" a été prise en compte");
+				listBooking[i]=bookId;
+				System.out.println("La réservation "+bookId+" a été prise en compte");
 				return;
 			}	
 		}
 		System.out.println("L'emploi du temps est trop chargé. Vous ne pouvez plus faire de réservation!!");
 		return;	
 	}
-	void removeBook(Book book){
+	void removeBook(int bookId){
 		for (int i = 0;i<49;i++){
-			if (listBooking[i]==book.bookId){
+			if (listBooking[i]==bookId){
 				listBooking[i]=0;
-				System.out.println("La réservation "+book+" a été supprimée");
+				System.out.println("La réservation "+bookId+" a été supprimée");
 				return;
 			}	
 		}
 		System.out.println("Cette réservation n'existe pas!! elle ne peut donc pas être supprimée");
 		return;	
-	}*/
+	}
 	
 	
 	
