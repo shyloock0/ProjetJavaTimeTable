@@ -14,8 +14,8 @@
       <Capacity>50</Capacity>
     </Room>
     <Room>
-      <RoomId>1</RoomId>
-      <Capacity>100</Capacity>
+      <RoomId>50</RoomId>
+      <Capacity>2500</Capacity>
     </Room>
   </Rooms>
   <TimeTables>
@@ -33,7 +33,7 @@
           <BookingId>2</BookingId>
           <Login>GS</Login>
           <DateBegin>07/04/2016 08:15:00</DateBegin>
-          <DateEnd>07/04/2016 11:45:00</DateEnd>
+          <DateEnd>07/04/2016 08:15:00</DateEnd>
           <RoomId>2</RoomId>
         </Book>
         <Book>
@@ -51,6 +51,13 @@
           <RoomId>1</RoomId>
         </Book>
       </Books>
+      <Book>
+        <BookingId>901</BookingId>
+        <Login>Sarah</Login>
+        <DateBegin>11 000 1110</DateBegin>
+        <DateEnd>11 000 11110</DateEnd>
+        <RoomId>55</RoomId>
+      </Book>
     </TimeTable>
   </TimeTables>
 </TimeTablesDB>

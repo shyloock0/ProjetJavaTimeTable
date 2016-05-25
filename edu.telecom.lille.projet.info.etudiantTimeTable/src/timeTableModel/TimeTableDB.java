@@ -20,6 +20,7 @@ import java.util.Iterator;
  * 
  */
 
+
 //TODO Classe à modifier
 
 public class TimeTableDB {
@@ -96,6 +97,7 @@ public class TimeTableDB {
 	
 	public void removeRoom(int roomId){
 		//destruction de l'objet java dans la map
+		roomsMap.remove(roomId);
 		
 		//charge la base de donnee
 		loadDB();
@@ -110,9 +112,9 @@ public class TimeTableDB {
 	        //Si l’étudiant possède l'Element en question on applique
 	        //les modifications.
 	    	
-	    	if(courant.getChild("RoomId").getText()==Integer.toString(roomId)){
+	    	if(courant.getChild("RoomId").getText().equals(Integer.toString(roomId))){
 	          //On supprime l'Element en question en passant par sont parrent
-	          roomsElt.removeContent(courant);
+	          courant.detach();
 	    	}
 	    }
 	    
@@ -124,13 +126,15 @@ public class TimeTableDB {
 	public void addRoom(int roomId, int capacity){
 		
 		loadDB();
-		
-		Room aRoom=new Room(roomId,capacity);
-		roomsMap.put(roomId,aRoom);
+		//creation de l'objet java
+		Room aroom=new Room(roomId,capacity);
+		roomsMap.put(roomId,aroom);
 		
 		//melange de deux techniques
 		Element RoomsElt= rootElt.getChild("Rooms");
 		System.out.println(RoomsElt);
+		
+		
 		//					JDOM
 		//creation d'une sous classe Room de Rooms
 		Element RoomElt = new Element("Room");
@@ -154,6 +158,8 @@ public class TimeTableDB {
 		loadDB();
 		
 		//creation de l'instance
+		/*Room aroom=new Room(roomId,capacity);
+		roomsMap.put(roomId,aroom);*/
 		TimeTable atimetable=new TimeTable(timeTableId);
 		timetablesMap.put(timeTableId,atimetable);
 		
@@ -180,6 +186,7 @@ public class TimeTableDB {
 	
 	public void removeTimeTable(int timeTableId){
 		//meme principe que pour removeRoom()
+		//timetablesMap.remove(timeTableId);
 		
 		//charge la base de donnee
 		loadDB();
@@ -191,9 +198,9 @@ public class TimeTableDB {
 		while(i.hasNext()){
 			Element courant = (Element)i.next();
 			//Si l’étudiant possède l'Element en question on applique les modifications.
-			if(courant.getChild("timeTableId").getText().compareTo(Integer.toString(timeTableId))==0){
-				//On supprime l'Element en question en passant par son parrent
-				TimeTablesElt.removeContent(courant);
+			if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
+				//On supprime l'Element en question
+				courant.detach();
 				}
 			}
 			    
@@ -206,6 +213,9 @@ public class TimeTableDB {
 		
 				//charge la base de donnee
 				loadDB();
+				
+				//on enleve de la map
+				//booksMap.remove(bookId);
 						
 				Element TimeTablesElt= rootElt.getChild("TimeTables");
 				List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
@@ -214,7 +224,7 @@ public class TimeTableDB {
 				while(i.hasNext()){
 					Element courant = (Element)i.next();
 					//Si on est dans le bonne emploi du temps
-					if(courant.getChild("timeTableId").getText()==Integer.toString(timeTableId)){
+					if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
 						//on reitere le processus
 						
 						//on creer la liste des Elt ded reservation de courant
@@ -224,8 +234,8 @@ public class TimeTableDB {
 						while(k.hasNext()){
 							Element courantbis = (Element)k.next();
 							
-							if(courantbis.getChild("bookId").getText()==Integer.toString(bookId)){
-								courant.removeContent(courantbis);
+							if(courantbis.getChild("BookingId").getText().equals(Integer.toString(bookId))){
+								courantbis.detach();
 							}
 						}
 					}
@@ -238,9 +248,14 @@ public class TimeTableDB {
 
 	public void addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
 		loadDB();
+		
 		//création de l'objet en java
-		Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
-		booksMap.put(bookId,abook);
+		//Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
+		//booksMap.put(bookId,abook);
+		
+		// on ajout la reservation dans l'emploi du temps associé en java
+		//timetablesMap.get(timeTableId).addBook(abook);
+	
 		
 		//melange de deux techniques
 		Element TimeTablesElt= rootElt.getChild("TimeTables");
@@ -251,12 +266,13 @@ public class TimeTableDB {
 
 		while(i.hasNext()){
 			Element courant = (Element)i.next();
-			if(courant.getChild("timeTableId").getText()==Integer.toString(timeTableId)){
+			if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
+				
 				//creation d'une classe book
 				Element BookElt = new Element("Book");
 				courant.addContent(BookElt);
 				//ajout de BookId
-				Element BookIdElt = new Element("BookId");
+				Element BookIdElt = new Element("BookingId");
 				BookIdElt.setText(Integer.toString(bookId));
 				BookElt.addContent(BookIdElt);
 				//ajout de login
@@ -265,15 +281,15 @@ public class TimeTableDB {
 				BookElt.addContent(LoginElt);
 				//ajout de DateBegin
 				Element DateBeginElt = new Element("DateBegin");
-					//problem conversion de date :DateBeginElt.setText(Date.toString(dateBegin)));
+				DateBeginElt.setText("11 000 1110");
 				BookElt.addContent(DateBeginElt);
-				//ajout de DateBegin
+				//ajout de DateEnd
 				Element DateEndElt = new Element("DateEnd");
-					//problem conversion de date :DateEndElt.setText(Date.toString(dateEnd)));
+				DateEndElt.setText("11 000 11110");
 				BookElt.addContent(DateEndElt);
 				//ajout de roomId
 				Element RoomIdElt = new Element("RoomId");
-				BookIdElt.setText(Integer.toString(roomId));
+				RoomIdElt.setText(Integer.toString(roomId));
 				BookElt.addContent(RoomIdElt);	
 			}
 

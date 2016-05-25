@@ -26,7 +26,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		final String file="timeTableDB.xml";
+		/*final String file="timeTableDB.xml";
 		TimeTableController UC=new TimeTableController(file);
 		UC.addRoom(1,50);
 		UC.addRoom(2,100);
@@ -57,6 +57,25 @@ public class Main {
 		UC.addBooking(1,1,"MF",dated2,datee2,1);
 		UC.addBooking(1,2,"GS",dated3,datee3,2);
 		UC.addBooking(1,3,"MF",dated4,datee4,3);
-		UC.saveDB();
+		UC.saveDB();*/
+		
+		TimeTableDB ttdb=new TimeTableDB("timeTableDB.xml");
+		Calendar dbeg4 = new GregorianCalendar(2016,3,8,16,00);
+		Calendar dend4 = new GregorianCalendar(2016,3,8,18,00);
+		Date dated4=dbeg4.getTime();
+		Date datee4=dend4.getTime();
+		System.out.println(dbeg4);
+		System.out.println(dend4);
+		System.out.println(dated4);
+		System.out.println(datee4);
+		
+		//ttdb.removeBook(2,900);
+		//ttdb.removeRoom(1);
+		//ttdb.addTimeTable(75);
+		//ttdb.addBook(2,400,"Sarah",dated4,datee4,55);
+		//ttdb.removeTimeTable(2);
+		//ttdb.addRoom(50,2500);
+		ttdb.showDB();
+		
 	}
 }

@@ -5,23 +5,23 @@ import java.util.Date;
 public class Book {
 	
 	//declaration des variables
-	protected int BookId;
+	protected int bookId;
 	protected String login;
 	protected Date dateBegin;
 	protected Date dateEnd;
 	protected int roomId;
 	
 	//initialisation des variables
-	public Book(int BookId, String login, Date dateBegin,Date dateEnd,int room){
-		this.BookId=BookId;
+	public Book(int bookId, String login, Date dateBegin,Date dateEnd,int roomId){
+		this.bookId=bookId;
 		this.login=login;
 		this.dateBegin=dateBegin;
 		this.dateEnd=dateEnd;
-		this.roomId=room;
+		this.roomId=roomId;
 	}
 	//recuperation des elmts protégés
 	public int getbookId(){
-		return BookId;
+		return bookId;
 	}
 	public String getlogin(){
 		return login;
