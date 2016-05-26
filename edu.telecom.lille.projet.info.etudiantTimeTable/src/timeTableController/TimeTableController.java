@@ -88,7 +88,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean addRoom(int roomId, int capacity) {	
-		return tTDB.addRoom(roomId, capacity);
+		return tTDB.addRoom(roomId,capacity);
 	}
 
 	@Override
