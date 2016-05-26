@@ -1,8 +1,8 @@
 package timeTableController;
 
-import java.awt.print.Book;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Set;
 
 import timeTableModel.TimeTableDB;
 /**
@@ -38,78 +38,83 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String getTeacherLogin(int timeTableId, int bookId) {
-		// Pourquoi on a timetableid???
-		return tTDB.getbooksMap().get(bookId).getlogin();
+		return tTDB.gethashmapbooksMap().get(timeTableId).get(bookId).getlogin();
 	}
 
 	@Override
 	public String[] roomsIdToString(){
-		String[] roomIdString;
-		int length;
-		
-		length=tTDB.getroomsMap().size();
-		roomIdString= new String[length];
-		
-		/*for (int i=0;i<length;i++){
-			roomIdString[i]=Integer.toString(tTDB.getroomsMap().)
-		}
-		*/
-		
 		return null;
 	}
 
 	@Override
 	public String[] roomsToString() {
-		// TODO Auto-generated method stub tout les informations()
-		return null;
+		//nombre de room 
+		int length;
+		length=tTDB.getroomsMap().size();
+		
+		//les deux listes
+		String[] r=new String[length];
+		for(int i=0;i<length;i++){
+			r[i]=String.valueOf((tTDB.getroomsMap().keySet().toArray())[i]);
+		}
+		return r;
 	}
 
 	@Override
 	public String[] timeTablesIDToString() {
-		// TODO Auto-generated method stub
-		return null;
+		int length;
+		length=tTDB.gettimetablesMap().size();
+		
+		String[] ttos = new String[length];
+		
+		for(int i=0;i<length;i++){
+			ttos[i]=String.valueOf((tTDB.gettimetablesMap().keySet().toArray())[i]);
+		}
+		return ttos;
 	}
 
 	@Override
 	public String[] booksIdToString(int timeTableId) {
+		int length;
+		length=tTDB.gethashmapbooksMap().get(timeTableId).size();
+		
+		String[] btos = new String[length];
+		
+		for(int i=0;i<length;i++){
+			btos[i]=String.valueOf((tTDB.gethashmapbooksMap().get(timeTableId).keySet().toArray())[i]);
+		}
 		// TODO Auto-generated method stub
-		return null;
+		return btos;
 	}
 
 	@Override
-	public boolean addRoom(int roomId, int capacity) {
-		tTDB.addRoom(roomId, capacity);// manque le cas ou c'est pas possible
-		return true;
+	public boolean addRoom(int roomId, int capacity) {	
+		return tTDB.addRoom(roomId, capacity);
 	}
 
 	@Override
 	public boolean removeRoom(int roomId) {
-		tTDB.removeRoom(roomId);//manque le cas ou c'est pas possible
-		return false;
+		return tTDB.removeRoom(roomId);
 	}
 
 	@Override
 	public int getRoom(int timeTableId, int bookId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return tTDB.gethashmapbooksMap().get(timeTableId).get(bookId).getroomId();
 	}
 
 	@Override
 	public boolean addTimeTable(int timeTableId) {
-		// TODO Auto-generated method stub
-		return false;
+		return tTDB.addTimeTable(timeTableId);
 	}
 
 	@Override
 	public boolean removeTimeTable(int timeTableId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean addBooking(int timeTableId, int bookingId, String login, Date dateBegin, Date dateEnd, int roomId) {
-		tTDB.addBook(timeTableId, bookingId, login, dateBegin, dateEnd, roomId);
-		return false;
+		return tTDB.addBook(timeTableId, bookingId, login, dateBegin, dateEnd, roomId);
 	}
 
 	@Override
@@ -120,9 +125,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public boolean removeBook(int timeTableId, int bookId) {
-		tTDB.removeBook(timeTableId, bookId);
-		// TODO Auto-generated method stub
-		return false;
+		return tTDB.removeBook(timeTableId, bookId);
 	}
 
 	@Override

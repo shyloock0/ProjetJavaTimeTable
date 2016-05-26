@@ -36,7 +36,8 @@ public class TimeTableDB {
 	//creation des map: association entre id et nom des instances
 	protected HashMap<Integer,Room> roomsMap; 
 	protected HashMap<Integer,TimeTable> timetablesMap;
-	protected HashMap<Integer, Book> booksMap;
+	protected HashMap<Integer,HashMap<Integer,Book>> hashmapbooksMap;
+	
 	
 	private String file;
 	/**
@@ -48,11 +49,11 @@ public class TimeTableDB {
 	 */
 	public TimeTableDB(String file){
 		//TODO	À modifier
-		//super();// cette classe n'est pas hériter!????
+		//super();
 		this.setFile(file);
 		this.roomsMap=new HashMap<Integer,Room>();
 		this.timetablesMap=new HashMap<Integer,TimeTable>();
-		this.booksMap=new HashMap<Integer,Book>();
+		this.hashmapbooksMap=new HashMap<Integer,HashMap<Integer,Book>>();
 	}
 	/**
 	 * Getter de file
@@ -75,11 +76,11 @@ public class TimeTableDB {
 	public HashMap<Integer,Room> getroomsMap(){
 		return roomsMap;
 	}
-	public HashMap<Integer,Book> getbooksMap(){
-		return booksMap;
-	}
 	public HashMap<Integer,TimeTable> gettimetablesMap(){
 		return timetablesMap;
+	}
+	public HashMap<Integer,HashMap<Integer,Book>> gethashmapbooksMap(){
+		return hashmapbooksMap;
 	}
 	
 	
@@ -169,14 +170,17 @@ public class TimeTableDB {
 		return true;		
 	}
 	
-
-	
 	public boolean addTimeTable(int timeTableId){
 		if (timetablesMap.containsKey(timeTableId)){
 			return false;
 		}
 		
 		loadDB();
+		//on va ajout creer et ajouter le bookhasmap
+		//protected HashMap<Integer,TimeTable> timetablesMap;
+		HashMap<Integer,Book> booksmap;
+		booksmap= new HashMap<Integer,Book>();
+		hashmapbooksMap.put(timeTableId,booksmap);
 		
 		//creation de l'instance
 		TimeTable atimetable;
@@ -234,14 +238,14 @@ public class TimeTableDB {
 	}
 	
 	public boolean removeBook(int timeTableId, int bookId){
-		if(booksMap.containsKey(timeTableId)){
+		if(hashmapbooksMap.get(timeTableId).containsKey(bookId)){
 			//meme principe que pour removeRoom()
 			
 			//charge la base de donnee
 			loadDB();
 			
 			//on enleve de la map
-			booksMap.remove(bookId);
+			hashmapbooksMap.get(timeTableId).remove(bookId);
 			
 			//on enleve pour les classes de java
 			timetablesMap.get(timeTableId).removeBooking(bookId);
@@ -279,14 +283,14 @@ public class TimeTableDB {
 	}
 
 	public boolean addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
-		if(booksMap.containsKey(bookId)){
+		if(hashmapbooksMap.get(timeTableId).containsKey(bookId)){
 			return false;	
 		}
 		loadDB();
 		
 		//création de l'objet en java
 		Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
-		booksMap.put(bookId,abook);
+		hashmapbooksMap.get(timeTableId).put(bookId,abook);
 		
 		// on ajout la reservation dans l'emploi du temps associé en java
 		timetablesMap.get(timeTableId).addBooking(bookId);

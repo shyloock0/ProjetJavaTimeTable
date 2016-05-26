@@ -73,13 +73,16 @@ public class Main {
 		//boolean s;
 		//s=ttdb.removeRoom(58);
 		ttdb.addRoom(3555,255500);
-		System.out.println(ttdb.getroomsMap().containsValue(1));
+		//System.out.println(ttdb.getroomsMap().containsValue(1));
 		//ttdb.addTimeTable(76);
 		//ttdb.addBook(2,400,"Sarah",dated4,datee4,55);
-		ttdb.removeTimeTable(3555);
-		//ttdb.addRoom(3555,255500);
+		//ttdb.removeTimeTable(3555);
+		ttdb.addRoom(3555,255500);
+		ttdb.addRoom(3556,255500);
+		System.out.println(String.valueOf((ttdb.getroomsMap().keySet().toArray())[0]));
+		
 		//ttdb.addRoom(666, 6666666);
-		ttdb.showDB();
+		//ttdb.showDB();
 		//System.out.println(ttdb.roomsMap.toString());
 		
 	}
