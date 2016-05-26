@@ -108,36 +108,40 @@ public class TimeTableDB {
 			}catch (IOException | JDOMException e){}//bizarre
 		}
 	
-	public void removeRoom(int roomId){
-		//destruction de l'objet java dans la map
-		roomsMap.remove(roomId);
-		
-		//charge la base de donnee
-		loadDB();
-		
-		Element roomsElt= rootElt.getChild("Rooms");
-	    List<Element> ListroomElt = roomsElt.getChildren("Room");
-	    Iterator<Element> i = ListroomElt.iterator();
-	    //On parcours la liste grâce à un iterator
-	    
-	    while(i.hasNext()){
-	    	Element courant = (Element)i.next();
-	        //Si l’étudiant possède l'Element en question on applique
-	        //les modifications.
-	    	
-	    	if(courant.getChild("RoomId").getText().equals(Integer.toString(roomId))){
-	          //On supprime l'Element en question en passant par sont parrent
-	          courant.detach();
-	    	}
-	    }
-	    
-	    //enregistre les modif dans la base de donnees
-	    saveDB();
+	public boolean removeRoom(int roomId){
+		if (roomsMap.containsKey(roomId)==true){
+			//destruction de l'objet java dans la map
+			roomsMap.remove(roomId);
+			//charge la base de donnee
+			loadDB();
+			
+			Element roomsElt= rootElt.getChild("Rooms");
+		    List<Element> ListroomElt = roomsElt.getChildren("Room");
+		    Iterator<Element> i = ListroomElt.iterator();
+		    //On parcours la liste grâce à un iterator
+		    
+		    while(i.hasNext()){
+		    	Element courant = (Element)i.next();
+		        //Si l’étudiant possède l'Element en question on applique
+		        //les modifications.
+		    	
+		    	if(courant.getChild("RoomId").getText().equals(Integer.toString(roomId))){
+		          //On supprime l'Element en question en passant par sont parrent
+		          courant.detach();
+		    	}
+		    }
+		  //enregistre les modif dans la base de donnees
+		    saveDB();
+		    return true;
+		}
+		return false;
 	}
 	
 
-	public void addRoom(int roomId, int capacity){
-		
+	public boolean addRoom(int roomId, int capacity){
+		if(roomsMap.containsKey(roomId)){
+			return false;
+		}
 		loadDB();
 		//creation de l'objet java
 		Room abroom=new Room(roomId,capacity);
@@ -162,13 +166,16 @@ public class TimeTableDB {
 		RoomElt.addContent(CapacityRoomElt);
 		
 		saveDB();
-		
-			
+		return true;		
 	}
 	
 
 	
-	public void addTimeTable(int timeTableId){
+	public boolean addTimeTable(int timeTableId){
+		if (timetablesMap.containsKey(timeTableId)){
+			return false;
+		}
+		
 		loadDB();
 		
 		//creation de l'instance
@@ -192,77 +199,89 @@ public class TimeTableDB {
 		Element BooksElt = new Element("Books");
 		TimeTableElt.addContent(BooksElt);
 
-		saveDB();	
+		saveDB();
+		return true;
 	}
 	
 	
 	
-	public void removeTimeTable(int timeTableId){
-		//meme principe que pour removeRoom()
-		timetablesMap.remove(timeTableId);
-		
-		//charge la base de donnee
-		loadDB();
-				
-		Element TimeTablesElt= rootElt.getChild("TimeTables");
-		List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
-		Iterator<Element> i = ListTimeTableElt.iterator();
-		//On parcours la liste grâce à un iterator
-		while(i.hasNext()){
-			Element courant = (Element)i.next();
-			//Si l’étudiant possède l'Element en question on applique les modifications.
-			if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
-				//On supprime l'Element en question
-				courant.detach();
+	public boolean removeTimeTable(int timeTableId){
+		if (timetablesMap.containsKey(timeTableId)){
+			//meme principe que pour removeRoom()
+			timetablesMap.remove(timeTableId);
+			
+			//charge la base de donnee
+			loadDB();
+					
+			Element TimeTablesElt= rootElt.getChild("TimeTables");
+			List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
+			Iterator<Element> i = ListTimeTableElt.iterator();
+			//On parcours la liste grâce à un iterator
+			while(i.hasNext()){
+				Element courant = (Element)i.next();
+				//Si l’étudiant possède l'Element en question on applique les modifications.
+				if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
+					//On supprime l'Element en question
+					courant.detach();
+					}
 				}
-			}
-			    
-		//enregistre les modif dans la base de donnees
-		saveDB();
+				    
+			//enregistre les modif dans la base de donnees
+			saveDB();
 		}
-	
-	public void removeBook(int timeTableId, int bookId){
-		//meme principe que pour removeRoom()
+		return false;
 		
-				//charge la base de donnee
-				loadDB();
-				
-				//on enleve de la map
-				booksMap.remove(bookId);
-				
-				//on enleve pour les classes de java
-				timetablesMap.get(timeTableId).removeBooking(bookId);
+	}
+	
+	public boolean removeBook(int timeTableId, int bookId){
+		if(booksMap.containsKey(timeTableId)){
+			//meme principe que pour removeRoom()
+			
+			//charge la base de donnee
+			loadDB();
+			
+			//on enleve de la map
+			booksMap.remove(bookId);
+			
+			//on enleve pour les classes de java
+			timetablesMap.get(timeTableId).removeBooking(bookId);
+					
+			Element TimeTablesElt= rootElt.getChild("TimeTables");
+			List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
+			Iterator<Element> i = ListTimeTableElt.iterator();
+			//On parcours la liste grâce à un iterator
+			while(i.hasNext()){
+				Element courant = (Element)i.next();
+				//Si on est dans le bonne emploi du temps
+				if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
+					//on reitere le processus
+					
+					//on creer la liste des Elt ded reservation de courant
+					List<Element> ListBookElt = courant.getChildren("Book");
+					Iterator<Element> k = ListBookElt.iterator();
+					
+					while(k.hasNext()){
+						Element courantbis = (Element)k.next();
 						
-				Element TimeTablesElt= rootElt.getChild("TimeTables");
-				List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
-				Iterator<Element> i = ListTimeTableElt.iterator();
-				//On parcours la liste grâce à un iterator
-				while(i.hasNext()){
-					Element courant = (Element)i.next();
-					//Si on est dans le bonne emploi du temps
-					if(courant.getChild("GroupId").getText().equals(Integer.toString(timeTableId))){
-						//on reitere le processus
-						
-						//on creer la liste des Elt ded reservation de courant
-						List<Element> ListBookElt = courant.getChildren("Book");
-						Iterator<Element> k = ListBookElt.iterator();
-						
-						while(k.hasNext()){
-							Element courantbis = (Element)k.next();
-							
-							if(courantbis.getChild("BookingId").getText().equals(Integer.toString(bookId))){
-								courantbis.detach();
-							}
+						if(courantbis.getChild("BookingId").getText().equals(Integer.toString(bookId))){
+							courantbis.detach();
 						}
 					}
-					    
-				//enregistre les modif dans la base de donnees
-				saveDB();
 				}
+				    
+			//enregistre les modif dans la base de donnees
+			saveDB();
+			}
+			return true;
+		}
+		return false;
 		
 	}
 
-	public void addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
+	public boolean addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
+		if(booksMap.containsKey(bookId)){
+			return false;	
+		}
 		loadDB();
 		
 		//création de l'objet en java
@@ -311,6 +330,7 @@ public class TimeTableDB {
 
 		saveDB();
 		}
+		return true;
 	}	
 
 	
