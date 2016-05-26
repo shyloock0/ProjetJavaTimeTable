@@ -70,13 +70,16 @@ public class Main {
 		System.out.println(datee4);
 		
 		//ttdb.removeBook(2,900);
-		//ttdb.removeRoom(76);
+		//boolean s;
+		//s=ttdb.removeRoom(58);
+		ttdb.addRoom(3555,255500);
+		System.out.println(ttdb.getroomsMap().containsValue(1));
 		//ttdb.addTimeTable(76);
 		//ttdb.addBook(2,400,"Sarah",dated4,datee4,55);
-		//ttdb.removeTimeTable(76);
+		ttdb.removeTimeTable(3555);
 		//ttdb.addRoom(3555,255500);
 		//ttdb.addRoom(666, 6666666);
-		//ttdb.showDB();
+		ttdb.showDB();
 		//System.out.println(ttdb.roomsMap.toString());
 		
 	}
