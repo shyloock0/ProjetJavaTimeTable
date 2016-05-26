@@ -83,7 +83,6 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 		for(int i=0;i<length;i++){
 			btos[i]=String.valueOf((tTDB.gethashmapbooksMap().get(timeTableId).keySet().toArray())[i]);
 		}
-		// TODO Auto-generated method stub
 		return btos;
 	}
 
@@ -119,8 +118,17 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public void getBookingsDate(int timeTableId, Hashtable<Integer, Date> dateBegin, Hashtable<Integer, Date> dateEnd) {
-		// TODO Auto-generated method stub
+		int length;
 		
+		length =tTDB.gethashmapbooksMap().get(timeTableId).size();
+		for (int i=0;i<length; i++){
+			int j;
+			j=(int) tTDB.gettimetablesMap().keySet().toArray()[i];
+			dateBegin.put(j,tTDB.gethashmapbooksMap().get(timeTableId).get(j).getDateBegin());
+			dateEnd.put(j, tTDB.gethashmapbooksMap().get(timeTableId).get(j).getDateEnd());
+		}
+		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -130,8 +138,9 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public int getBookingsMaxId(int timeTableId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int length;
+		length=tTDB.gethashmapbooksMap().get(timeTableId).size();
+		return (int) tTDB.gettimetablesMap().keySet().toArray()[length-1];
 	}
 
 	@Override

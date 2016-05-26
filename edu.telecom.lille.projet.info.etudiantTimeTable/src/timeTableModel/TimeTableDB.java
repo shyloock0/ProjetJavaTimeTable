@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 /**
  * 
@@ -36,7 +37,7 @@ public class TimeTableDB {
 	//creation des map: association entre id et nom des instances
 	protected HashMap<Integer,Room> roomsMap; 
 	protected HashMap<Integer,TimeTable> timetablesMap;
-	protected HashMap<Integer,HashMap<Integer,Book>> hashmapbooksMap;
+	protected HashMap<Integer,LinkedHashMap<Integer,Book>> hashmapbooksMap;
 	
 	
 	private String file;
@@ -48,12 +49,11 @@ public class TimeTableDB {
 	 * 		Le nom du fichier qui contient la base de données.
 	 */
 	public TimeTableDB(String file){
-		//TODO	À modifier
 		//super();
 		this.setFile(file);
 		this.roomsMap=new HashMap<Integer,Room>();
 		this.timetablesMap=new HashMap<Integer,TimeTable>();
-		this.hashmapbooksMap=new HashMap<Integer,HashMap<Integer,Book>>();
+		this.hashmapbooksMap=new HashMap<Integer,LinkedHashMap<Integer,Book>>();
 	}
 	/**
 	 * Getter de file
@@ -79,7 +79,7 @@ public class TimeTableDB {
 	public HashMap<Integer,TimeTable> gettimetablesMap(){
 		return timetablesMap;
 	}
-	public HashMap<Integer,HashMap<Integer,Book>> gethashmapbooksMap(){
+	public HashMap<Integer,LinkedHashMap<Integer,Book>> gethashmapbooksMap(){
 		return hashmapbooksMap;
 	}
 	
@@ -178,8 +178,8 @@ public class TimeTableDB {
 		loadDB();
 		//on va ajout creer et ajouter le bookhasmap
 		//protected HashMap<Integer,TimeTable> timetablesMap;
-		HashMap<Integer,Book> booksmap;
-		booksmap= new HashMap<Integer,Book>();
+		LinkedHashMap<Integer,Book> booksmap;
+		booksmap= new LinkedHashMap<Integer,Book>();
 		hashmapbooksMap.put(timeTableId,booksmap);
 		
 		//creation de l'instance
