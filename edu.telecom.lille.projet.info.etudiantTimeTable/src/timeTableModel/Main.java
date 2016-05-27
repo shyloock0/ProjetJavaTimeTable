@@ -26,7 +26,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		/*final String file="timeTableDB.xml";
+		final String file="timeTableDB.xml";
 		TimeTableController UC=new TimeTableController(file);
 		UC.addRoom(1,50);
 		UC.addRoom(2,100);
@@ -57,8 +57,16 @@ public class Main {
 		UC.addBooking(1,1,"MF",dated2,datee2,1);
 		UC.addBooking(1,2,"GS",dated3,datee3,2);
 		UC.addBooking(1,3,"MF",dated4,datee4,3);
-		UC.saveDB();*/
+		UC.saveDB();
 		
+		Calendar dbeg8 = new GregorianCalendar(2016,3,8,16,00);
+		Calendar dend8 = new GregorianCalendar(2016,3,8,18,00);
+		Date dated8=dbeg8.getTime();
+		Date datee8=dend8.getTime();
+		dated8.toString();
+		System.out.println(dated8);
+		System.out.println(datee8);
+		/*
 		TimeTableDB ttdb=new TimeTableDB("timeTableDB.xml");
 		Calendar dbeg4 = new GregorianCalendar(2016,3,8,16,00);
 		Calendar dend4 = new GregorianCalendar(2016,3,8,18,00);
@@ -69,7 +77,7 @@ public class Main {
 		System.out.println(dated4);
 		System.out.println(datee4);
 		
-		//ttdb.removeBook(2,900);
+		ttdb.removeBook(2,900);
 		//boolean s;
 		//s=ttdb.removeRoom(58);
 		ttdb.addRoom(3555,255500);
@@ -84,6 +92,9 @@ public class Main {
 		//ttdb.addRoom(666, 6666666);
 		//ttdb.showDB();
 		//System.out.println(ttdb.roomsMap.toString());
+		 
+		 */
+		//UC.removeBook(1,1);
 		
 	}
 }

@@ -38,7 +38,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String getTeacherLogin(int timeTableId, int bookId) {
-		return tTDB.gethashmapbooksMap().get(timeTableId).get(bookId).getlogin();
+		return tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(bookId).getlogin();
 	}
 
 	@Override
@@ -76,12 +76,12 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 	@Override
 	public String[] booksIdToString(int timeTableId) {
 		int length;
-		length=tTDB.gethashmapbooksMap().get(timeTableId).size();
+		length=tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
 		
 		String[] btos = new String[length];
 		
 		for(int i=0;i<length;i++){
-			btos[i]=String.valueOf((tTDB.gethashmapbooksMap().get(timeTableId).keySet().toArray())[i]);
+			btos[i]=String.valueOf((tTDB.gettimetablesMap().get(timeTableId).getbooksMap().keySet().toArray())[i]);
 		}
 		return btos;
 	}
@@ -98,7 +98,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public int getRoom(int timeTableId, int bookId) {
-		return tTDB.gethashmapbooksMap().get(timeTableId).get(bookId).getroomId();
+		return tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(bookId).getroomId();
 	}
 
 	@Override
@@ -120,12 +120,12 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 	public void getBookingsDate(int timeTableId, Hashtable<Integer, Date> dateBegin, Hashtable<Integer, Date> dateEnd) {
 		int length;
 		
-		length =tTDB.gethashmapbooksMap().get(timeTableId).size();
+		length =tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
 		for (int i=0;i<length; i++){
 			int j;
 			j=(int) tTDB.gettimetablesMap().keySet().toArray()[i];
-			dateBegin.put(j,tTDB.gethashmapbooksMap().get(timeTableId).get(j).getDateBegin());
-			dateEnd.put(j, tTDB.gethashmapbooksMap().get(timeTableId).get(j).getDateEnd());
+			dateBegin.put(j,tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(j).getDateBegin());
+			dateEnd.put(j, tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(j).getDateEnd());
 		}
 		
 		// TODO Auto-generated method stub		
@@ -139,7 +139,7 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 	@Override
 	public int getBookingsMaxId(int timeTableId) {
 		int length;
-		length=tTDB.gethashmapbooksMap().get(timeTableId).size();
+		length=tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
 		return (int) tTDB.gettimetablesMap().keySet().toArray()[length-1];
 	}
 
