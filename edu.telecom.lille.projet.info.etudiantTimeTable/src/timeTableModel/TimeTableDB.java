@@ -1,6 +1,10 @@
 package timeTableModel;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.jdom2.*;
 import org.jdom2.output.*;
 import org.jdom2.input.*;
@@ -8,7 +12,6 @@ import java.util.List;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 
 /**
  * 
@@ -103,12 +106,60 @@ public class TimeTableDB {
 	
 	
 	public void loadDB(){
+		int capacity;
+		int roomid;
+		int timetableid;
+		String login;
+		int bookid;
+		Date datebegin=new Date();
+		Date dateend=new Date();
 		try{
 			SAXBuilder sxb = new SAXBuilder();
 			doc = sxb.build(new File(file));
 			rootElt= doc.getRootElement();
 			}catch (IOException | JDOMException e){}//bizarre
-		}
+		List<Element> ListroomElt = RoomsE.getChildren("Room");
+	    Iterator<Element> i = ListroomElt.iterator();
+	    while(i.hasNext()){
+	    	Element courant = (Element)i.next();
+	    	roomid=Integer.parseInt(courant.getAttributeValue("RoomId"));
+	    	capacity=Integer.parseInt(courant.getAttributeValue("Capacity"));
+	    	if (roomsMap.containsKey(roomid)==false){
+	    		Room abroom=new Room(roomid,capacity);
+	    		roomsMap.put(roomid,abroom);
+	    		} 
+	    }
+	    List<Element> ListtimetableElt = TimeTablesE.getChildren("TimeTable");
+	    Iterator<Element> k = ListtimetableElt.iterator();
+	    while(k.hasNext()){
+	    	Element courantbis = (Element)k.next();
+	    	timetableid=Integer.parseInt(courantbis.getAttributeValue("GroupId"));
+	    	List<Element> ListbookElt = courantbis.getChildren("Book");
+		    
+		    if (timetablesMap.containsKey(timetableid)==false){
+	    		TimeTable atimetable=new TimeTable(timetableid);
+	    		timetablesMap.put(timetableid,atimetable);
+	    		} 
+		    Iterator<Element> l = ListbookElt.iterator();
+		    while(l.hasNext()){
+		    	Element courantbisbis=(Element)l.next();
+		    	login=courantbisbis.getAttributeValue("Login");
+		    	bookid=Integer.parseInt(courantbisbis.getAttributeValue("BookingId"));
+		    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		    	try {
+		    		datebegin=formatter.parse(courantbisbis.getAttributeValue("DateBegin"));
+		    		dateend=formatter.parse(courantbisbis.getAttributeValue("DateEnd"));
+		    	} catch (ParseException e) {
+		    		e.printStackTrace();
+		    	roomid=Integer.parseInt(courantbisbis.getAttributeValue("Roomid"));
+		    	if (timetablesMap.get(timetableid).getbooksMap().containsKey(bookid)==false){
+		    		Book abook=new Book(bookid,login,datebegin,dateend,roomid);
+		    		timetablesMap.get(timetableid).getbooksMap().put(bookid,abook);
+		    		}
+		    	}
+		    	}
+		    }
+	    }
 	
 	public boolean removeRoom(int roomId){
 		if (roomsMap.containsKey(roomId)==true){
@@ -313,13 +364,16 @@ public class TimeTableDB {
 				Element LoginElt = new Element("Login");
 				LoginElt.setText(login);
 				BookElt.addContent(LoginElt);
+				//date dans le bon format
+				DateFormat df=new SimpleDateFormat("dd/MM/year HH:mm:ss");
+				
 				//ajout de DateBegin
 				Element DateBeginElt = new Element("DateBegin");
-				DateBeginElt.setText("11 000 1110");
+				DateBeginElt.setText(df.format(dateBegin));
 				BookElt.addContent(DateBeginElt);
 				//ajout de DateEnd
 				Element DateEndElt = new Element("DateEnd");
-				DateEndElt.setText("11 000 11110");
+				DateEndElt.setText(df.format(dateEnd));
 				BookElt.addContent(DateEndElt);
 				//ajout de roomId
 				Element RoomIdElt = new Element("RoomId");

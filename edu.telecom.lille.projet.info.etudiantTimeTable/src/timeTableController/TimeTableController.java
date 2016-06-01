@@ -63,13 +63,16 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 	@Override
 	public String[] timeTablesIDToString() {
 		int length;
+
 		length=tTDB.gettimetablesMap().size();
-		
+		System.out.println(""+length);
 		String[] ttos = new String[length];
 		
 		for(int i=0;i<length;i++){
 			ttos[i]=String.valueOf((tTDB.gettimetablesMap().keySet().toArray())[i]);
 		}
+		
+		System.out.println(ttos[0]);
 		return ttos;
 	}
 
