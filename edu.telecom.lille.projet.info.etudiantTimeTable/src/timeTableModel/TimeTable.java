@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 /**
  * 
  * @author sarah and jonathan
- *
+ *Cette classe crée l'entité emploi du temps. Un emploi du temps est composé de reservation, d'un numero
  */
 
 public class TimeTable {
@@ -24,7 +24,7 @@ public class TimeTable {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return une hashmap permettant de donner acces a toutes les reservations de l'emploi du temps
 	 */
 	
 	
@@ -34,7 +34,7 @@ public class TimeTable {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return le numero de l'emploi du temps
 	 */
 
 	public int gettimeTableId(){

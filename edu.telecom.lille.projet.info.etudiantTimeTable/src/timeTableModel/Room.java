@@ -2,7 +2,7 @@ package timeTableModel;
 /**
  * 
  * @author sarah et jonathan
- *
+ *Cette classe crée l'entité salle. Elle est composé de un numéro( d'identité ) et d'une capacité
  */
 
 public class Room {
@@ -23,7 +23,7 @@ public class Room {
 	}
 	/**
 	 * 
-	 * @return 
+	 * @return le numéro de la chambre
 	 */
 	
 	//récupérations des variables
@@ -32,7 +32,7 @@ public class Room {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return le nombre maximun de personnes que la chambre peut contenir
 	 */
 	
 	public int getcapacity(){

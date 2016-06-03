@@ -19,8 +19,8 @@ import java.util.Iterator;
  * La structure du fichier XML devra être la même que celle du fichier TimeTableDB.xml.
  * @see <a href="../../TimeTableDB.xml">TimeTableDB.xml</a> 
  * 
- * @author Jose Mennesson (Mettre à jour)
- * @version 04/2016 (Mettre à jour)
+ * @author sarah et jonathan
+ *
  * 
  */
 
@@ -89,9 +89,6 @@ public class TimeTableDB {
 	}
 	
 	
-	/**
-	 * ddee	
-	 */
 	//sauvergarde
 	public void saveDB(){
 		try{
@@ -99,9 +96,6 @@ public class TimeTableDB {
 			sortie.output(doc,new FileOutputStream(file));
 		}catch (IOException e){}
 	}
-	/**
-	 * ffd
-	 */
 	public void showDB(){
 		try{
 			XMLOutputter sortie =new XMLOutputter(Format.getPrettyFormat());
@@ -109,9 +103,7 @@ public class TimeTableDB {
 		}catch (IOException e){}
 	}
 	
-	/**
-	 * ddd
-	 */
+	
 	public void loadDB(){
 		// variable premettant de stocker les donnees pendant un tps limités
 		int capacity;
@@ -121,13 +113,13 @@ public class TimeTableDB {
 		int bookid;
 		Date datebegin=new Date();
 		Date dateend=new Date();
+		
 		//sauvegarde du doc
 		try{
 			SAXBuilder sxb = new SAXBuilder();
 			doc = sxb.build(new File(file));
 			rootElt= doc.getRootElement();
 			}catch (IOException | JDOMException e){}//bizarre
-		
 		
 		//creation de l'arborescence
 		Element roomsElt= rootElt.getChild("Rooms");
@@ -196,9 +188,9 @@ public class TimeTableDB {
 		    }
 	    }
 	/**
-	 * 
+	 * supprime une salle si elle existe deja dans la liste des salles
 	 * @param roomId
-	 * @return
+	 * @return	boolean
 	 */
 	public boolean removeRoom(int roomId){
 		loadDB();
@@ -231,10 +223,10 @@ public class TimeTableDB {
 	}
 	
 	/**
-	 * 
+	 * Rajoute une salle dans la liste des salles si elle n'existe pas deja (roomid jamais utilisé)
 	 * @param roomId
 	 * @param capacity
-	 * @return
+	 * @return boolean
 	 */
 	public boolean addRoom(int roomId, int capacity){
 		loadDB();
@@ -268,7 +260,11 @@ public class TimeTableDB {
 		saveDB();
 		return true;		
 	}
-	
+	/**
+	 * ajoute un emploi du temps si le timetableid n'est pas déjà utilisé
+	 * @param timeTableId
+	 * @return boolean
+	 */
 	public boolean addTimeTable(int timeTableId){
 		loadDB();
 		if (timetablesMap.containsKey(timeTableId)){
@@ -307,9 +303,9 @@ public class TimeTableDB {
 	
 	
 	/**
-	 * 
+	 * supprime un emploi du temps qui existe déjà
 	 * @param timeTableId
-	 * @return
+	 * @return boolean
 	 */
 	public boolean removeTimeTable(int timeTableId){
 		loadDB();
@@ -341,10 +337,10 @@ public class TimeTableDB {
 		
 	}
 	/**
-	 * 
+	 * supprime une réservation (liée à un emploi du temps) qui existe déjà
 	 * @param timeTableId
 	 * @param bookId
-	 * @return
+	 * @return boolean
 	 */
 	public boolean removeBook(int timeTableId, int bookId){
 		loadDB();
@@ -389,14 +385,14 @@ public class TimeTableDB {
 		
 	}
 	/**
-	 * 
+	 * rajoute une reservation dans un emploi du temps si elle n'existe pas déjà
 	 * @param timeTableId
 	 * @param bookId
 	 * @param login
 	 * @param dateBegin
 	 * @param dateEnd
 	 * @param roomId
-	 * @return
+	 * @return boolean
 	 */
 	public boolean addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
 		loadDB();

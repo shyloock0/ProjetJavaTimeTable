@@ -5,7 +5,7 @@ import java.util.Date;
  * 
  * @author sarah et jonathan
  *
- *Création de l'instance 
+ * On créer l'objet reservation qui contient 4 elements: son numero et sa capacité et ses dates de débuts et de fins
  */
 public class Book {
 	//declaration des variables
@@ -34,35 +34,35 @@ public class Book {
 	//recuperation des elmts protégés
 	/**
 	 * 
-	 * @return int
+	 * @return le numero de reservation
 	 */
 	public int getbookId(){
 		return bookId;
 	}
 	/**
-	 * dddddddddddddddddd
-	 * @return String
+	 * 
+	 * @return l'identifiant d'un user
 	 */
 	public String getlogin(){
 		return login;
 	}
 	/**
 	 * 
-	 * @return Date
+	 * @return la login du professeur
 	 */
 	public Date getDateBegin(){
 		return dateBegin;
 	}
 	/**
 	 * 
-	 * @return Date
+	 * @return la date de début
 	 */
 	public Date getDateEnd(){
 		return dateEnd;
 	}
 	/**
 	 * 
-	 * @return int
+	 * @return la date de fin
 	 */
 	public int getroomId(){
 		return roomId;
