@@ -2,8 +2,12 @@ package timeTableController;
 
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import timeTableModel.Book;
+import timeTableModel.Room;
+import timeTableModel.TimeTable;
 import timeTableModel.TimeTableDB;
 /**
  * Cette classe est le contrôleur d'emplois du temps que vous devez implémenter. 
@@ -43,50 +47,59 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public String[] roomsIdToString(){
-		return null;
+		int length;
+		length=tTDB.getroomsMap().size();
+		String[] string=new String[length];
+		int j=0;
+		for(Entry<Integer,Room> entry  :  tTDB.getroomsMap().entrySet()){
+			Integer cle= entry.getKey();
+			string[j]=Integer.toString(cle);
+			j++;
+			}
+		return string;
 	}
 
 	@Override
 	public String[] roomsToString() {
-		//nombre de room 
 		int length;
 		length=tTDB.getroomsMap().size();
-		
-		//les deux listes
-		String[] r=new String[length];
-		for(int i=0;i<length;i++){
-			r[i]=String.valueOf((tTDB.getroomsMap().keySet().toArray())[i]);
+		String[] string=new String[length];
+		String[] interm=new String[2];
+		for (int i=0;i<length;i++){
+			interm[0]=roomsIdToString()[i];
+			interm[1]=Integer.toString((tTDB.getroomsMap().get((Integer.parseInt(interm[0]))).getcapacity()));
+			string[i]=interm[0]+" , "+interm[1];
 		}
-		return r;
+		
+		return string;
 	}
 
 	@Override
 	public String[] timeTablesIDToString() {
 		int length;
-
 		length=tTDB.gettimetablesMap().size();
-		System.out.println(""+length);
-		String[] ttos = new String[length];
-		
-		for(int i=0;i<length;i++){
-			ttos[i]=String.valueOf((tTDB.gettimetablesMap().keySet().toArray())[i]);
-		}
-		
-		System.out.println(ttos[0]);
-		return ttos;
+		String[] string=new String[length];
+		int j=0;
+		for(Entry<Integer, timeTableModel.TimeTable> entry: tTDB.gettimetablesMap().entrySet() ){
+			Integer cle= entry.getKey();
+			string[j]=Integer.toString(cle);
+			j++;
+			}
+		return string;
 	}
 
 	@Override
 	public String[] booksIdToString(int timeTableId) {
 		int length;
 		length=tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
-		
-		String[] btos = new String[length];
-		
-		for(int i=0;i<length;i++){
-			btos[i]=String.valueOf((tTDB.gettimetablesMap().get(timeTableId).getbooksMap().keySet().toArray())[i]);
-		}
-		return btos;
+		String[] string=new String[length];
+		int j=0;
+		for(Entry<Integer, Book> entry: tTDB.gettimetablesMap().get(timeTableId).getbooksMap().entrySet() ){
+			Integer cle= entry.getKey();
+			string[j]=Integer.toString(cle);
+			j++;
+			}
+		return string;
 	}
 
 	@Override
@@ -121,15 +134,20 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public void getBookingsDate(int timeTableId, Hashtable<Integer, Date> dateBegin, Hashtable<Integer, Date> dateEnd) {
-		int length;
+		for(Entry<Integer,Book> entry  :  tTDB.gettimetablesMap().get(timeTableId).getbooksMap().entrySet())           {
+			Integer           cle           =           entry.getKey();
+			Book           valeur           =           entry.getValue();
+			dateBegin.put(cle,valeur.getDateBegin());
+			dateEnd.put(cle, valeur.getDateEnd());
+		}
 		
-		length =tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
-		for (int i=0;i<length; i++){
+		
+		/*for (int i=0;i<length; i++){
 			int j;
-			j=(int) tTDB.gettimetablesMap().keySet().toArray()[i];
+			j=(int) (tTDB.gettimetablesMap().keySet().toArray())[i];
 			dateBegin.put(j,tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(j).getDateBegin());
 			dateEnd.put(j, tTDB.gettimetablesMap().get(timeTableId).getbooksMap().get(j).getDateEnd());
-		}
+		}*/
 		
 		// TODO Auto-generated method stub		
 	}
@@ -141,9 +159,12 @@ public class TimeTableController<TimeTable> implements ITimeTableController{
 
 	@Override
 	public int getBookingsMaxId(int timeTableId) {
-		int length;
-		length=tTDB.gettimetablesMap().get(timeTableId).getbooksMap().size();
-		return (int) tTDB.gettimetablesMap().keySet().toArray()[length-1];
+		int j=0;
+		for(Entry<Integer, Book> entry: tTDB.gettimetablesMap().get(timeTableId).getbooksMap().entrySet() ){
+			Integer cle= entry.getKey();
+			j=cle;
+			}
+		return j;
 	}
 
 	@Override

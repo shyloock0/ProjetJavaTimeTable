@@ -32,6 +32,7 @@ public class Main {
 		UC.addRoom(2,100);
 		UC.addRoom(3,150);
 		
+		
 		Calendar dbeg1 = new GregorianCalendar(2016,3,6,8,00);
 		Calendar dend1 = new GregorianCalendar(2016,3,6,10,00);	
 		Date dated1=dbeg1.getTime();
@@ -58,14 +59,8 @@ public class Main {
 		UC.addBooking(1,2,"GS",dated3,datee3,2);
 		UC.addBooking(1,3,"MF",dated4,datee4,3);
 		UC.saveDB();
+	
 		
-		Calendar dbeg8 = new GregorianCalendar(2016,3,8,16,00);
-		Calendar dend8 = new GregorianCalendar(2016,3,8,18,00);
-		Date dated8=dbeg8.getTime();
-		Date datee8=dend8.getTime();
-		dated8.toString();
-		System.out.println(dated8);
-		System.out.println(datee8);
 		/*
 		TimeTableDB ttdb=new TimeTableDB("timeTableDB.xml");
 		Calendar dbeg4 = new GregorianCalendar(2016,3,8,16,00);
@@ -95,6 +90,7 @@ public class Main {
 		 
 		 */
 		//UC.removeBook(1,1);
-		
+		//UC.addRoom(3556,255500);
+		UC.removeRoom(3556);
 	}
 }

@@ -61,6 +61,7 @@ public class TimeTableDB {
 		this.timetablesMap=new HashMap<Integer,TimeTable>();
 		rootElt.addContent(RoomsE);
 		rootElt.addContent(TimeTablesE);
+		loadDB();
 	}
 	/**
 	 * Getter de file
@@ -106,6 +107,7 @@ public class TimeTableDB {
 	
 	
 	public void loadDB(){
+		// variable premettant de stocker les donnees pendant un tps limités
 		int capacity;
 		int roomid;
 		int timetableid;
@@ -113,60 +115,88 @@ public class TimeTableDB {
 		int bookid;
 		Date datebegin=new Date();
 		Date dateend=new Date();
+		//sauvegarde du doc
 		try{
 			SAXBuilder sxb = new SAXBuilder();
 			doc = sxb.build(new File(file));
 			rootElt= doc.getRootElement();
 			}catch (IOException | JDOMException e){}//bizarre
-		List<Element> ListroomElt = RoomsE.getChildren("Room");
+		
+		
+		//creation de l'arborescence
+		Element roomsElt= rootElt.getChild("Rooms");
+		//liste des enfants de Rooms de classe Room
+		List<Element> ListroomElt = roomsElt.getChildren("Room");
 	    Iterator<Element> i = ListroomElt.iterator();
+	    //on parcours la liste
 	    while(i.hasNext()){
+	    	//on nome l'element qu'on traite
 	    	Element courant = (Element)i.next();
-	    	roomid=Integer.parseInt(courant.getAttributeValue("RoomId"));
-	    	capacity=Integer.parseInt(courant.getAttributeValue("Capacity"));
+	    	//on recupere le texte de la classe RoomId et on le met sous forme de int
+	    	roomid=Integer.parseInt(courant.getChildText("RoomId"));
+	    	//System.out.println("roomid "+roomid);
+	    	// meme chose pour la capacite
+	    	capacity=Integer.parseInt(courant.getChildText("Capacity"));
+	    	
+	    	//si le roomid n'appartient pas a la hashmap, on le rajoute et on cree la classe java associciée
+	    	System.out.println(roomsMap.containsKey(roomid));
 	    	if (roomsMap.containsKey(roomid)==false){
-	    		Room abroom=new Room(roomid,capacity);
-	    		roomsMap.put(roomid,abroom);
+	    		Room aroom=new Room(roomid,capacity);
+	    		System.out.println("roomid "+roomid);
+	    		roomsMap.put(roomid,aroom);
 	    		} 
+	    	//System.out.println(roomsMap.size());
 	    }
-	    List<Element> ListtimetableElt = TimeTablesE.getChildren("TimeTable");
+	    
+	    // on fait la meme chose avec timetable
+	    Element timetablesElt= rootElt.getChild("TimeTables");
+	    List<Element> ListtimetableElt = timetablesElt.getChildren("TimeTable");
 	    Iterator<Element> k = ListtimetableElt.iterator();
 	    while(k.hasNext()){
 	    	Element courantbis = (Element)k.next();
-	    	timetableid=Integer.parseInt(courantbis.getAttributeValue("GroupId"));
-	    	List<Element> ListbookElt = courantbis.getChildren("Book");
-		    
-		    if (timetablesMap.containsKey(timetableid)==false){
+	    	timetableid=Integer.parseInt(courantbis.getChildText("GroupId"));
+	    	System.out.println("bookingid "+courantbis.getChildText("GroupId"));
+	    	
+	    	if (timetablesMap.containsKey(timetableid)==false){
 	    		TimeTable atimetable=new TimeTable(timetableid);
 	    		timetablesMap.put(timetableid,atimetable);
 	    		} 
+	    	
+	    	
+	    	Element booksElt= courantbis.getChild("Books");
+	    	List<Element> ListbookElt = booksElt.getChildren("Book");
 		    Iterator<Element> l = ListbookElt.iterator();
 		    while(l.hasNext()){
 		    	Element courantbisbis=(Element)l.next();
-		    	login=courantbisbis.getAttributeValue("Login");
-		    	bookid=Integer.parseInt(courantbisbis.getAttributeValue("BookingId"));
+		    	login=courantbisbis.getChildText("Login");
+		    	//System.out.println(login);
+		    	bookid=Integer.parseInt(courantbisbis.getChildText("BookingId"));
+		    	//System.out.println(bookid);
 		    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		    	try {
-		    		datebegin=formatter.parse(courantbisbis.getAttributeValue("DateBegin"));
-		    		dateend=formatter.parse(courantbisbis.getAttributeValue("DateEnd"));
+		    		datebegin=formatter.parse(courantbisbis.getChildText("DateBegin"));
+		    		dateend=formatter.parse(courantbisbis.getChildText("DateEnd"));
+		    		//System.out.println(dateend);
 		    	} catch (ParseException e) {
-		    		e.printStackTrace();
-		    	roomid=Integer.parseInt(courantbisbis.getAttributeValue("Roomid"));
+		    		e.printStackTrace();}
+		    	roomid=Integer.parseInt(courantbisbis.getChildText("RoomId"));
+		    	//System.out.println(roomid);
 		    	if (timetablesMap.get(timetableid).getbooksMap().containsKey(bookid)==false){
 		    		Book abook=new Book(bookid,login,datebegin,dateend,roomid);
 		    		timetablesMap.get(timetableid).getbooksMap().put(bookid,abook);
 		    		}
-		    	}
+		    	
 		    	}
 		    }
 	    }
 	
 	public boolean removeRoom(int roomId){
+		loadDB();
 		if (roomsMap.containsKey(roomId)==true){
 			//destruction de l'objet java dans la map
 			roomsMap.remove(roomId);
 			//charge la base de donnee
-			loadDB();
+			
 			
 			Element roomsElt= rootElt.getChild("Rooms");
 		    List<Element> ListroomElt = roomsElt.getChildren("Room");
@@ -179,7 +209,7 @@ public class TimeTableDB {
 		        //les modifications.
 		    	
 		    	if(courant.getChild("RoomId").getText().equals(Integer.toString(roomId))){
-		          //On supprime l'Element en question en passant par sont parrent
+		          //On supprime l'Element en question en passant par son parent
 		          courant.detach();
 		    	}
 		    }
@@ -192,17 +222,19 @@ public class TimeTableDB {
 	
 
 	public boolean addRoom(int roomId, int capacity){
-		if(roomsMap.containsKey(roomId)){
+		loadDB();
+		if(roomsMap.containsKey(roomId)==true){
+			//System.out.println(roomsMap.containsKey(roomId));
 			return false;
 		}
-		loadDB();
+		
 		//creation de l'objet java
 		Room abroom=new Room(roomId,capacity);
 		roomsMap.put(roomId,abroom);
 		
 		//melange de deux techniques
 		Element RoomsElt= rootElt.getChild("Rooms");
-		System.out.println(RoomsElt);
+		//System.out.println(RoomsElt);
 		
 		
 		//					JDOM
@@ -223,11 +255,12 @@ public class TimeTableDB {
 	}
 	
 	public boolean addTimeTable(int timeTableId){
+		loadDB();
 		if (timetablesMap.containsKey(timeTableId)){
 			return false;
 		}
 		
-		loadDB();
+		
 		//on va ajout creer et ajouter le bookhasmap
 		//protected HashMap<Integer,TimeTable> timetablesMap;
 		//timetablesMap.get(timeTableId).getbooksMap().put(timeTableId,timetablesMap.get(timeTableId).getbooksMap().get(key));
@@ -260,12 +293,13 @@ public class TimeTableDB {
 	
 	
 	public boolean removeTimeTable(int timeTableId){
+		loadDB();
 		if (timetablesMap.containsKey(timeTableId)){
 			//meme principe que pour removeRoom()
 			timetablesMap.remove(timeTableId);
 			
 			//charge la base de donnee
-			loadDB();
+			
 					
 			Element TimeTablesElt= rootElt.getChild("TimeTables");
 			List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
@@ -289,11 +323,12 @@ public class TimeTableDB {
 	}
 	
 	public boolean removeBook(int timeTableId, int bookId){
+		loadDB();
 		if(timetablesMap.get(timeTableId).getbooksMap().containsKey(bookId)){
 			//meme principe que pour removeRoom()
 			
 			//charge la base de donnee
-			loadDB();
+			
 			
 			//on enleve de la map
 			timetablesMap.get(timeTableId).getbooksMap().remove(bookId);
@@ -301,8 +336,7 @@ public class TimeTableDB {
 					
 			Element TimeTablesElt= rootElt.getChild("TimeTables");
 			List<Element> ListTimeTableElt = TimeTablesElt.getChildren("TimeTable");
-			Iterator<Element> i = ListTimeTableElt.iterator();
-			//On parcours la liste grâce à un iterator
+			Iterator<Element> i = ListTimeTableElt.iterator();			//On parcours la liste grâce à un iterator
 			while(i.hasNext()){
 				Element courant = (Element)i.next();
 				//Si on est dans le bonne emploi du temps
@@ -332,10 +366,11 @@ public class TimeTableDB {
 	}
 
 	public boolean addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
+		loadDB();
+		System.out.println("fonction addbook"+timetablesMap.get(timeTableId).getbooksMap().containsKey(bookId));
 		if(timetablesMap.get(timeTableId).getbooksMap().containsKey(bookId)){
 			return false;	
 		}
-		loadDB();
 		
 		//création de l'objet en java
 		Book abook=new Book(bookId,login, dateBegin,dateEnd,roomId);
@@ -355,7 +390,7 @@ public class TimeTableDB {
 				
 				//creation d'une classe book
 				Element BookElt = new Element("Book");
-				courant.addContent(BookElt);
+				courant.getChild("Books").addContent(BookElt);
 				//ajout de BookId
 				Element BookIdElt = new Element("BookingId");
 				BookIdElt.setText(Integer.toString(bookId));
@@ -365,7 +400,7 @@ public class TimeTableDB {
 				LoginElt.setText(login);
 				BookElt.addContent(LoginElt);
 				//date dans le bon format
-				DateFormat df=new SimpleDateFormat("dd/MM/year HH:mm:ss");
+				DateFormat df=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 				
 				//ajout de DateBegin
 				Element DateBeginElt = new Element("DateBegin");
@@ -385,18 +420,6 @@ public class TimeTableDB {
 		return true;
 	}	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

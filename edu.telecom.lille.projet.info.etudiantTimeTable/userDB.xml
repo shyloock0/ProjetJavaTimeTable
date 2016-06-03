@@ -12,7 +12,7 @@
 			<surname>Lepetit</surname>
 			<pwd>prout</pwd>
 			<studentId>2002</studentId>
-			<groupId>-1</groupId>
+			<groupId>1</groupId>
 		</Student>
 		<Student>
 			<login>BS</login>
