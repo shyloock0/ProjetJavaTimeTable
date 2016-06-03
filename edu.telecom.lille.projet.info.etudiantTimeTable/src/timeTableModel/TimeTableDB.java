@@ -89,7 +89,9 @@ public class TimeTableDB {
 	}
 	
 	
-		
+	/**
+	 * ddee	
+	 */
 	//sauvergarde
 	public void saveDB(){
 		try{
@@ -97,7 +99,9 @@ public class TimeTableDB {
 			sortie.output(doc,new FileOutputStream(file));
 		}catch (IOException e){}
 	}
-	
+	/**
+	 * ffd
+	 */
 	public void showDB(){
 		try{
 			XMLOutputter sortie =new XMLOutputter(Format.getPrettyFormat());
@@ -105,7 +109,9 @@ public class TimeTableDB {
 		}catch (IOException e){}
 	}
 	
-	
+	/**
+	 * ddd
+	 */
 	public void loadDB(){
 		// variable premettant de stocker les donnees pendant un tps limités
 		int capacity;
@@ -189,7 +195,11 @@ public class TimeTableDB {
 		    	}
 		    }
 	    }
-	
+	/**
+	 * 
+	 * @param roomId
+	 * @return
+	 */
 	public boolean removeRoom(int roomId){
 		loadDB();
 		if (roomsMap.containsKey(roomId)==true){
@@ -220,7 +230,12 @@ public class TimeTableDB {
 		return false;
 	}
 	
-
+	/**
+	 * 
+	 * @param roomId
+	 * @param capacity
+	 * @return
+	 */
 	public boolean addRoom(int roomId, int capacity){
 		loadDB();
 		if(roomsMap.containsKey(roomId)==true){
@@ -291,7 +306,11 @@ public class TimeTableDB {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param timeTableId
+	 * @return
+	 */
 	public boolean removeTimeTable(int timeTableId){
 		loadDB();
 		if (timetablesMap.containsKey(timeTableId)){
@@ -321,7 +340,12 @@ public class TimeTableDB {
 		return false;
 		
 	}
-	
+	/**
+	 * 
+	 * @param timeTableId
+	 * @param bookId
+	 * @return
+	 */
 	public boolean removeBook(int timeTableId, int bookId){
 		loadDB();
 		if(timetablesMap.get(timeTableId).getbooksMap().containsKey(bookId)){
@@ -364,7 +388,16 @@ public class TimeTableDB {
 		return false;
 		
 	}
-
+	/**
+	 * 
+	 * @param timeTableId
+	 * @param bookId
+	 * @param login
+	 * @param dateBegin
+	 * @param dateEnd
+	 * @param roomId
+	 * @return
+	 */
 	public boolean addBook(int timeTableId, int bookId, String login, Date dateBegin, Date dateEnd, int roomId){
 		loadDB();
 		System.out.println("fonction addbook"+timetablesMap.get(timeTableId).getbooksMap().containsKey(bookId));
